@@ -21,7 +21,7 @@ protected:
 	int Distance;	//Horizontal distance between enemy & the tower of its region
 	                //Always positive (ranges from 2 to 60)
 	double Health;	//Enemy health
-	
+	double Priority;
 	//
 	// TODO: Add More Data Members As Needed
 	//
@@ -29,6 +29,14 @@ protected:
 public:
 	Enemy(color r_c, REGION r_region, int d = MaxDistance);
 	virtual ~Enemy();
+
+	void SetID(int id);
+	void SetHealth(double health);
+	void SetPriority(double pr);
+
+	int GetID();
+	double GetHealth();
+	double GetPriority();
 
 	color GetColor() const;
 	REGION GetRegion() const;

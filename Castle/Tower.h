@@ -13,7 +13,7 @@ public:
 	Tower();
 	void SetHealth(double h);
 	double GetHealth() const;
-
+	void attack(Enemy* ActEnemies); //Added by me
 	//
 	// TODO: Add More Member Functions As Needed
 	//

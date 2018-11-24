@@ -16,6 +16,12 @@
     <Filter Include="Enemies">
       <UniqueIdentifier>{0af33dc2-c49c-4540-b583-4c48cacf990e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Linked List">
+      <UniqueIdentifier>{eb1e7370-2680-479d-9469-0d4d37a969b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Heap">
+      <UniqueIdentifier>{6b062f60-0f2b-4576-8402-852ee3be5e6a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CMUgraphicsLib\auxil.cpp">
@@ -140,6 +146,12 @@
     <ClCompile Include="Enemies\Enemy.cpp">
       <Filter>Enemies</Filter>
     </ClCompile>
+    <ClCompile Include="Heap.cpp">
+      <Filter>Heap</Filter>
+    </ClCompile>
+    <ClCompile Include="LinkedList.cpp">
+      <Filter>Linked List</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -215,6 +227,15 @@
     </ClInclude>
     <ClInclude Include="Enemies\Enemy.h">
       <Filter>Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Heap.h">
+      <Filter>Heap</Filter>
+    </ClInclude>
+    <ClInclude Include="LinkedList.h">
+      <Filter>Linked List</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyNode.h">
+      <Filter>Linked List</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

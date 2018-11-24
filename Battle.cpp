@@ -43,8 +43,8 @@ void Battle::Just_A_Demo()
 	std::cout<<"\nIn phase2, you will be asked to select game mode\n";
 	std::cout<<"\nFor now just press ENTER key to continue...";
 	
-	char tmp[10];
-	std::cin.getline(tmp,10);
+	//char tmp[10];
+	//std::cin.getline(tmp,10);
 	//
 	// THIS IS JUST A DEMO
 	// IT SHOULD BE REMOVED IN PHASE 1 AND PHASE 2
