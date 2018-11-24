@@ -1,7 +1,7 @@
 #pragma once
 
 #define NoOfRegions 4
-#define MaxDistance  60         // the maximum distance between any enemy and its tower
+#define MaxDistance  65         // the maximum distance between any enemy and its tower
 #define MinDistance  2          // the minimum distance between any enemy and its tower
 #define MaxVerticalEnemies  15   // the maximum number of enemies that can be drawn
 		                        // if they are in the same region and same distance
