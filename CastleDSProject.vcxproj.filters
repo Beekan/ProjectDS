@@ -16,10 +16,13 @@
     <Filter Include="Enemies">
       <UniqueIdentifier>{0af33dc2-c49c-4540-b583-4c48cacf990e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Linked List">
+    <Filter Include="DataStructures">
+      <UniqueIdentifier>{3fd214a5-bfd5-4ab8-889c-829489f6d373}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DataStructures\Linked List">
       <UniqueIdentifier>{eb1e7370-2680-479d-9469-0d4d37a969b3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Heap">
+    <Filter Include="DataStructures\Heap">
       <UniqueIdentifier>{6b062f60-0f2b-4576-8402-852ee3be5e6a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -147,10 +150,13 @@
       <Filter>Enemies</Filter>
     </ClCompile>
     <ClCompile Include="Heap.cpp">
-      <Filter>Heap</Filter>
+      <Filter>DataStructures\Heap</Filter>
     </ClCompile>
     <ClCompile Include="LinkedList.cpp">
-      <Filter>Linked List</Filter>
+      <Filter>DataStructures\Linked List</Filter>
+    </ClCompile>
+    <ClCompile Include="HeapItem.cpp">
+      <Filter>DataStructures\Heap</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -229,13 +235,16 @@
       <Filter>Enemies</Filter>
     </ClInclude>
     <ClInclude Include="Heap.h">
-      <Filter>Heap</Filter>
+      <Filter>DataStructures\Heap</Filter>
     </ClInclude>
     <ClInclude Include="LinkedList.h">
-      <Filter>Linked List</Filter>
+      <Filter>DataStructures\Linked List</Filter>
     </ClInclude>
     <ClInclude Include="EnemyNode.h">
-      <Filter>Linked List</Filter>
+      <Filter>DataStructures\Linked List</Filter>
+    </ClInclude>
+    <ClInclude Include="HeapItem.h">
+      <Filter>DataStructures\Heap</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

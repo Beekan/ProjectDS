@@ -123,6 +123,7 @@
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <OutputFile>.\Debug/CastleDSProject.bsc</OutputFile>
+      <PreserveSbr>true</PreserveSbr>
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -274,6 +275,7 @@
     <ClCompile Include="Enemies\Enemy.cpp" />
     <ClCompile Include="GUI\GUI.cpp" />
     <ClCompile Include="Heap.cpp" />
+    <ClCompile Include="HeapItem.cpp" />
     <ClCompile Include="LinkedList.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -305,6 +307,7 @@
     <ClInclude Include="GUI\GUI.h" />
     <ClInclude Include="EnemyNode.h" />
     <ClInclude Include="Heap.h" />
+    <ClInclude Include="HeapItem.h" />
     <ClInclude Include="LinkedList.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
