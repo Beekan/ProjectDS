@@ -17,6 +17,13 @@ enum REGION {
 	D_REG
 };
 
+//the state of the enemy
+enum State {
+	Active,
+	Inactive,
+	Frozen,
+	Killed
+};
 
 
 

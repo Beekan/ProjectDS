@@ -7,7 +7,7 @@
 //You can choose whatever colors you like for your enemies
 const color FIGHTER_CLR = DARKBLUE;
 const color HEALER_CLR = ORANGERED;
-
+const color FREEZER_CLR = WHITE;
 
 // Enemy is the base class of each type of enemy
 // Enemy should be an abstract class in next phases
@@ -25,6 +25,7 @@ protected:
 	int arrivaltime;
 	int power;
 	int reloadperiod;
+	State Currentstate;
 
 	//
 	// TODO: Add More Data Members As Needed
