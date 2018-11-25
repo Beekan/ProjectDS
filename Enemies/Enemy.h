@@ -22,6 +22,10 @@ protected:
 	                //Always positive (ranges from 2 to 60)
 	double Health;	//Enemy health
 	double Priority;
+	int arrivaltime;
+	int power;
+	int reloadperiod;
+
 	//
 	// TODO: Add More Data Members As Needed
 	//
