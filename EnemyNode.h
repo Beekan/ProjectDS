@@ -7,44 +7,45 @@ class EnemyNode
 {
 private:
 	T Item;
-	EnemyNode * next;
+	EnemyNode<T> * next;
 public: 
-	EnemyNode();
-	EnemyNode(T newItem);
+	EnemyNode<T>();
+	EnemyNode<T>(T newItem);
 	void setItem(T newItem);
-	void setNext(EnemyNode* nextNodePtr);
+	void setNext(EnemyNode<T>* nextNodePtr);
 	T getItem() const ;
-	EnemyNode* getNext() const;
-
+	EnemyNode<T>* getNext() const;
+};
 template <class T>
-EnemyNode(T newItem)
+EnemyNode<T>::EnemyNode()
+{
+	next= NULL;
+} 
+template <class T>
+EnemyNode<T>::EnemyNode(T newItem)
 {
 	Item = newItem;
 	next= NULL;
 } 
-EnemyNode()
-{
-	next= NULL;
-} 
+
 template <class T>
-void setItem( T newItem)
+void EnemyNode<T>::setItem( T newItem)
 {
 	item = newItem;
 }
-
-void setNext(EnemyNode* nextNodePtr)
+template <class T>
+void EnemyNode<T>::setNext(EnemyNode<T>* nextNodePtr)
 {
 next = nextNodePtr;
 } 
 template <class T>
-T getItem() 
+T EnemyNode<T>::getItem() const
 {
 return item;
 } 
 template <class T>
-T* getNext() 
+EnemyNode<T>* EnemyNode<T>::getNext() const
 {
 return next;
-}
 };
 #endif
