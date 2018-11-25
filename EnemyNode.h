@@ -9,8 +9,8 @@ private:
 	T Item;
 	EnemyNode<T> * next;
 public: 
-	EnemyNode<T>();
-	EnemyNode<T>(T newItem);
+	EnemyNode();
+	EnemyNode(T newItem);
 	void setItem(T newItem);
 	void setNext(EnemyNode<T>* nextNodePtr);
 	T getItem() const ;
@@ -19,6 +19,7 @@ public:
 template <class T>
 EnemyNode<T>::EnemyNode()
 {
+	Item = 0;
 	next= NULL;
 } 
 template <class T>
@@ -41,7 +42,7 @@ next = nextNodePtr;
 template <class T>
 T EnemyNode<T>::getItem() const
 {
-return item;
+return Item;
 } 
 template <class T>
 EnemyNode<T>* EnemyNode<T>::getNext() const
