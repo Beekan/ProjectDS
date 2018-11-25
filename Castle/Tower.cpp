@@ -19,3 +19,7 @@ double Tower::GetHealth() const
 {
 	return Health;
 }
+
+void Tower::attack(Enemy * ActEnemies)
+{
+}

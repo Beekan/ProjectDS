@@ -4,6 +4,12 @@
 class Tower
 {
 	double Health;
+	State currentstate;
+	int AttackNO; //Number of enemies a tower can attack per tick
+	firetype fire;
+	int firepower;
+	int freezelimit;
+
 
 	//
 	// TODO: Add More Data Members As Needed
