@@ -7,7 +7,9 @@ Enemy::Enemy(color r_c, REGION r_region, int d)
 	Region = r_region;
 	SetDistance(d);
 }
-
+Enemy::Enemy()
+{
+}
 Enemy::~Enemy()
 {
 }

@@ -32,6 +32,7 @@ protected:
 	//
 
 public:
+	Enemy();
 	Enemy(color r_c, REGION r_region, int d = MaxDistance);
 	virtual ~Enemy();
 
