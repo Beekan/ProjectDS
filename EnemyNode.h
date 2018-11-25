@@ -41,7 +41,7 @@ next = nextNodePtr;
 template <class T>
 T EnemyNode<T>::getItem() const
 {
-return item;
+return Item;
 } 
 template <class T>
 EnemyNode<T>* EnemyNode<T>::getNext() const
