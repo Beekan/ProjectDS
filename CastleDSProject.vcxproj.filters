@@ -149,15 +149,6 @@
     <ClCompile Include="Enemies\Enemy.cpp">
       <Filter>Enemies</Filter>
     </ClCompile>
-    <ClCompile Include="Heap.cpp">
-      <Filter>DataStructures\Heap</Filter>
-    </ClCompile>
-    <ClCompile Include="LinkedList.cpp">
-      <Filter>DataStructures\Linked List</Filter>
-    </ClCompile>
-    <ClCompile Include="HeapItem.cpp">
-      <Filter>DataStructures\Heap</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">

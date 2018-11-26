@@ -274,9 +274,6 @@
     <ClCompile Include="Demo_Main.cpp" />
     <ClCompile Include="Enemies\Enemy.cpp" />
     <ClCompile Include="GUI\GUI.cpp" />
-    <ClCompile Include="Heap.cpp" />
-    <ClCompile Include="HeapItem.cpp" />
-    <ClCompile Include="LinkedList.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Battle.h" />
