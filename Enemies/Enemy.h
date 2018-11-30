@@ -42,6 +42,7 @@ public:
 	void SetRegion(REGION region);
 	void SetReloadPeriod(int Reload);
 	int  GetDistance() const;
+	int GetArrivalTime();
 	int  GetID();
 	double GetHealth();
 	double GetPriority();

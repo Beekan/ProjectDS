@@ -80,9 +80,22 @@ Castle * Battle::GetCastle()
 	return &BCastle;
 }
 
-void Battle::movetoactive()
+void Battle::movetoactive(int simulationtick)
 {
-
+	Enemy* Enemy;
+	Tower Tower;
+	REGION Region;
+	IEL.peekFront(Enemy);
+	if (Enemy->GetArrivalTime() <= simulationtick) {
+		IEL.dequeue(Enemy);
+		Enemy->SetDistance(MaxDistance);
+		Region = Enemy->GetRegion();
+		Tower = BCastle.retTower(Region);
+		Tower.AddEnemy(Enemy);
+		BEnemiesForDraw[Enemy->GetID() - 1] = Enemy;
+		
+		
+	}
 }
 
 

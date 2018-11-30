@@ -12,6 +12,7 @@ public:
 	bool enqueue(Enemy*& newEntry);
 	bool dequeue(Enemy*& frntEntry);
 	bool peekFront(Enemy*& frntEntry)  const;
+
 	~InactiveEnemyList();
 };
 

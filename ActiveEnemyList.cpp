@@ -38,11 +38,11 @@ void ActiveEnemyList::PrintList()
 *	- data : The value to be stored in the new Enemy.
 */
 
-void ActiveEnemyList::InsertBeg(EnemyNode* E)
+void ActiveEnemyList::InsertBeg(Enemy* E)
 {
-
-	E->setNext(Head);
-	Head = E;
+	EnemyNode *R = new EnemyNode(E);
+	R->setNext(Head);
+	Head = R;
 	count++;
 }
 

@@ -22,3 +22,8 @@ void Castle::SetTowerPower(int Power) {
 		Towers[i].SetPower(Power);
 	}
 }
+
+Tower Castle::retTower(REGION R)
+{
+	return Towers[R];
+}

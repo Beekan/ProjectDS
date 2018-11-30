@@ -89,3 +89,8 @@ int Enemy::GetDistance() const
 {
 	return Distance;
 }
+
+int Enemy::GetArrivalTime()
+{
+	return arrivaltime;
+}

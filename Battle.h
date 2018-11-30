@@ -31,7 +31,7 @@ public:
 	void readfile();
 	void AddEnemy(Enemy* Ptr);
 	Castle * GetCastle();
-	void movetoactive();
+	void movetoactive(int simulationtick);
 	void RunSimulation();
 
 	void Just_A_Demo();	//just to show a demo and should be removed in phase1 1 & 2

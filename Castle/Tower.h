@@ -1,7 +1,7 @@
 #pragma once
 #include "..\Defs.h"
-#include"ActiveEnemyList.h"
-#include "Enemies\Enemy.h"
+#include"../ActiveEnemyList.h"
+#include "../Enemies/Enemy.h"
 class Tower
 {
 	double Health;
@@ -20,6 +20,7 @@ class Tower
 public:
 
 	Tower();
+	void AddEnemy(Enemy*);
 	void SetHealth(double h);
 	void SetEnemy(int Max);
 	void SetPower(int Power);

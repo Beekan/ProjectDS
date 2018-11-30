@@ -6,6 +6,11 @@ Tower::Tower()
 	SetHealth(TowerInitHealth);
 }
 
+void Tower::AddEnemy(Enemy *E)
+{
+	AEL.InsertBeg(E);
+}
+
 
 void Tower::SetHealth(double h)
 {

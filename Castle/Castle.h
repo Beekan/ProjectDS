@@ -5,8 +5,8 @@
 #include "..\GUI\GUI.h"
 
 #include "Tower.h"
-#include "Enemies\Enemy.h"
-#include "Heap.h"
+#include "../Enemies/Enemy.h"
+#include "../heap.h"
 
 
 
@@ -25,6 +25,7 @@ public:
 	void SetTowerHealth(double h);
 	void SetMaxEnemy(int Max);
 	void SetTowerPower(int Power);
+	Tower retTower(REGION R);
 
 	//
 	// TODO: Add More Member Functions As Needed
