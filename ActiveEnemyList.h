@@ -12,7 +12,7 @@ public:
 	ActiveEnemyList();
 	~ActiveEnemyList();
 	void PrintList();
-	void InsertBeg(Enemy* E);
+	void InsertBeg(EnemyNode* E);
 	void DeleteAll();
 	bool DeleteEnemy(int ID);
 	void InsertEnd(Enemy* E);
