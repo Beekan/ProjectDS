@@ -38,6 +38,9 @@ public:
 	void SetPriority(double pr);
 	void setarrivaltime(int arrivaltime);
     void SetDistance(int d);
+	void SetPower(int Power);
+	void SetRegion(REGION region);
+	void SetReloadPeriod(int Reload);
 	int  GetDistance() const;
 	int  GetID();
 	double GetHealth();
@@ -52,7 +55,7 @@ public:
 	// Virtual Functions: ----------------
 
 	//virtual void Move() = 0;	//All enemies can move
-	//virtual void Act() = 0;	//Acting means fighting or healing
+	virtual void Act() = 0;	//Acting means fighting or healing
 
 	//
 	// TODO: Add More Member Functions As Needed

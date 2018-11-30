@@ -21,6 +21,8 @@ public:
 
 	Tower();
 	void SetHealth(double h);
+	void SetEnemy(int Max);
+	void SetPower(int Power);
 	double GetHealth() const;
 	void attack(Enemy* ActEnemies); //Added by me
 	//

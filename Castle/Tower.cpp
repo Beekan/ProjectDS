@@ -15,6 +15,16 @@ void Tower::SetHealth(double h)
 		Health = 0; // killed
 }
 
+void Tower::SetEnemy(int Max)
+{
+	AttackNO = Max;
+}
+
+void Tower::SetPower(int Power)
+{
+	firepower = Power;
+}
+
 double Tower::GetHealth() const
 {
 	return Health;

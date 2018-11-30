@@ -1,6 +1,10 @@
 #include "Battle.h"
 
 #include <iostream>
+#include <fstream>
+#include"Fighter.h"
+#include"Healer.h"
+#include"Freezer.h"
 
 Battle::Battle()
 {
@@ -9,6 +13,56 @@ Battle::Battle()
 
 void Battle::readfile()
 {
+	pGUI->PrintMessage("Please, Enter the File name.");
+	string FileName = pGUI->GetString();
+	LoadFile.open(FileName);
+	double TowerHealth; 
+	int MaxEnemy, TowerPower, EnemyID,EnemyType,EnemyHealth,EnemyPower,Reloadperiod,Arrivaltime;
+	REGION EnemyRegion;
+	char Region;
+	Enemy* Enemy;
+	string line;
+	LoadFile >> TowerHealth;
+	LoadFile >> MaxEnemy;
+	LoadFile >> TowerPower;
+	BCastle.SetTowerHealth(TowerHealth);
+	BCastle.SetMaxEnemy(MaxEnemy);
+	BCastle.SetTowerPower(TowerPower);
+	while(1) 
+	{
+		LoadFile >> EnemyID;
+		LoadFile >> EnemyType;
+		LoadFile >> Arrivaltime;
+		LoadFile >> EnemyHealth;
+		LoadFile >> EnemyPower;
+		LoadFile >> Reloadperiod;
+		LoadFile >> Region;
+		EnemyRegion = static_cast<REGION>(Region);
+		if (EnemyID = -1) { break; }
+		switch (EnemyType) {
+		case 1:
+			Fighter * Fighter;
+			Enemy = Fighter;
+			break;
+		case 2:
+			Healer * Healer;
+			Enemy = Healer;
+		    break;
+		case 3:
+			Freezer * Freezer;
+			Enemy = Freezer;
+            break;
+		default:
+			break;
+		}
+		Enemy->setarrivaltime(Arrivaltime);
+		Enemy->SetHealth(EnemyHealth);
+		Enemy->SetID(EnemyID);
+		Enemy->SetPower(EnemyPower);
+		Enemy->SetRegion(EnemyRegion);
+		Enemy->SetReloadPeriod(Reloadperiod);
+		IEL.enqueue(Enemy);
+	}
 }
 
 void Battle::AddEnemy(Enemy* Ptr)
@@ -64,7 +118,7 @@ void Battle::Just_A_Demo()
 	// In the game, enemies should be loaded from an input file
 	// and should be dynamically allocated
 	
-	Enemy e1(DARKBLUE, A_REG, 6);
+	/*Enemy e1(DARKBLUE, A_REG, 6);
 	Enemy e2(DARKBLUE, D_REG, 60);
 	Enemy e3(DARKOLIVEGREEN, B_REG, 60); 
 	Enemy e4(DARKOLIVEGREEN, A_REG, 4);
@@ -74,11 +128,11 @@ void Battle::Just_A_Demo()
 	Enemy e8(DARKOLIVEGREEN, C_REG, 7); 
 	Enemy e9(ORANGERED, A_REG, 30); 
 	Enemy e10(DARKBLUE, C_REG, 4);
-	Enemy e11(GREEN, A_REG, 20);
+	Enemy e11(GREEN, A_REG, 20);*/
 	
 
 	// Adding the enemies to the battle
-	AddEnemy(&e1);
+	/*AddEnemy(&e1);
 	AddEnemy(&e2);
 	AddEnemy(&e3);
 	AddEnemy(&e4);
@@ -88,7 +142,7 @@ void Battle::Just_A_Demo()
 	AddEnemy(&e8);
 	AddEnemy(&e9);
 	AddEnemy(&e10);
-	AddEnemy(&e11);
+	AddEnemy(&e11);*/
 
 	// Drawing the battle
 	pGUI->DrawBattle(BEnemiesForDraw, EnemyCount);
@@ -102,7 +156,7 @@ void Battle::Just_A_Demo()
 	{
 
 		// Decrement the distance of each enemy. Just for the sake of demo
-		e1.DecrementDist();
+		/*e1.DecrementDist();
 		e2.DecrementDist();
 		e3.DecrementDist();
 		e4.DecrementDist();
@@ -111,7 +165,7 @@ void Battle::Just_A_Demo()
 		e7.DecrementDist();
 		e8.DecrementDist();
 		e9.DecrementDist();
-		e10.DecrementDist();
+		e10.DecrementDist();*/
 
 		// Redraw the enemies
 		pGUI->DrawBattle(BEnemiesForDraw, EnemyCount);

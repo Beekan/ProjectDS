@@ -23,6 +23,8 @@ public:
 
 	Castle();
 	void SetTowerHealth(double h);
+	void SetMaxEnemy(int Max);
+	void SetTowerPower(int Power);
 
 	//
 	// TODO: Add More Member Functions As Needed

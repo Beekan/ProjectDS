@@ -70,6 +70,21 @@ void Enemy::SetDistance(int d)
 		Distance = MaxDistance;
 }
 
+void Enemy::SetPower(int Power)
+{
+	power = Power;
+}
+
+void Enemy::SetRegion(REGION region)
+{
+	Region = region;
+}
+
+void Enemy::SetReloadPeriod(int Reload)
+{
+	reloadperiod = Reload;
+}
+
 int Enemy::GetDistance() const
 {
 	return Distance;
