@@ -7,7 +7,7 @@ class Tower
 	double Health;
 	State currentstate;
 	int AttackNO; //Number of enemies a tower can attack per tick
-	firetype fire;
+	FireType fire;
 	int firepower;
 	int freezelimit;
 	ActiveEnemyList AEL;

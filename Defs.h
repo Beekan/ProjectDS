@@ -18,7 +18,10 @@ enum REGION {
 };
 
 
-
+enum FireType {
+	bullets,
+	ice
+};
 
 //the state of the enemy
 enum State {
