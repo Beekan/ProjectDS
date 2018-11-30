@@ -127,6 +127,7 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ActiveEnemyList.cpp" />
     <ClCompile Include="Battle.cpp" />
     <ClCompile Include="Castle\Castle.cpp" />
     <ClCompile Include="Castle\Tower.cpp" />
@@ -273,9 +274,15 @@
     </ClCompile>
     <ClCompile Include="Demo_Main.cpp" />
     <ClCompile Include="Enemies\Enemy.cpp" />
+    <ClCompile Include="EnemyNode.cpp" />
+    <ClCompile Include="Fighter.cpp" />
+    <ClCompile Include="Freezer.cpp" />
     <ClCompile Include="GUI\GUI.cpp" />
+    <ClCompile Include="Healer.cpp" />
+    <ClCompile Include="InactiveEnemyList.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ActiveEnemyList.h" />
     <ClInclude Include="Battle.h" />
     <ClInclude Include="Castle\Castle.h" />
     <ClInclude Include="Castle\Tower.h" />
@@ -301,11 +308,14 @@
     <ClInclude Include="CMUgraphicsLib\jpeg\jversion.h" />
     <ClInclude Include="Defs.h" />
     <ClInclude Include="Enemies\Enemy.h" />
-    <ClInclude Include="GUI\GUI.h" />
     <ClInclude Include="EnemyNode.h" />
+    <ClInclude Include="Fighter.h" />
+    <ClInclude Include="Freezer.h" />
+    <ClInclude Include="GUI\GUI.h" />
+    <ClInclude Include="Healer.h" />
     <ClInclude Include="Heap.h" />
     <ClInclude Include="HeapItem.h" />
-    <ClInclude Include="LinkedList.h" />
+    <ClInclude Include="InactiveEnemyList.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

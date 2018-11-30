@@ -26,7 +26,6 @@ protected:
 	int power;
 	int reloadperiod;
 	State Currentstate;
-	EnemyType type;
 
 	//
 	// TODO: Add More Data Members As Needed

@@ -16,7 +16,7 @@ public:
 	double getData();                    // Return data item
 	void setData(T data);          // Set the data item value
 };
-#include "HeapItem.h"
+
 
 //-----------------------------------
 // Default constructor
@@ -25,7 +25,6 @@ template <class T>
 HeapItem<T>::HeapItem()
 {
 	m_iKey = 0;
-	m_dData = 0.0;
 }
 
 //-----------------------------------

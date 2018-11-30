@@ -17,17 +17,8 @@ enum REGION {
 	D_REG
 };
 
-//the type of the enemy
-enum EnemyType {
-	Fighter,
-	Healer,
-	Freezer
-};
-//the type of bullet
-enum firetype {
-	ice,
-	bullets
-};
+
+
 
 //the state of the enemy
 enum State {

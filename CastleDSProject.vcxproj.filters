@@ -25,6 +25,12 @@
     <Filter Include="DataStructures\Heap">
       <UniqueIdentifier>{6b062f60-0f2b-4576-8402-852ee3be5e6a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="DataStructures\Queue">
+      <UniqueIdentifier>{52a95aea-ee57-4029-81a3-60d048349ea7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Enemies\EnemyTypes">
+      <UniqueIdentifier>{6bc152fe-444f-4c1a-b958-1f2252ae9525}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CMUgraphicsLib\auxil.cpp">
@@ -149,6 +155,24 @@
     <ClCompile Include="Enemies\Enemy.cpp">
       <Filter>Enemies</Filter>
     </ClCompile>
+    <ClCompile Include="EnemyNode.cpp">
+      <Filter>DataStructures\Linked List</Filter>
+    </ClCompile>
+    <ClCompile Include="ActiveEnemyList.cpp">
+      <Filter>DataStructures\Linked List</Filter>
+    </ClCompile>
+    <ClCompile Include="InactiveEnemyList.cpp">
+      <Filter>DataStructures\Queue</Filter>
+    </ClCompile>
+    <ClCompile Include="Fighter.cpp">
+      <Filter>Enemies\EnemyTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="Healer.cpp">
+      <Filter>Enemies\EnemyTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="Freezer.cpp">
+      <Filter>Enemies\EnemyTypes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -228,14 +252,26 @@
     <ClInclude Include="Heap.h">
       <Filter>DataStructures\Heap</Filter>
     </ClInclude>
-    <ClInclude Include="LinkedList.h">
-      <Filter>DataStructures\Linked List</Filter>
+    <ClInclude Include="HeapItem.h">
+      <Filter>DataStructures\Heap</Filter>
     </ClInclude>
     <ClInclude Include="EnemyNode.h">
       <Filter>DataStructures\Linked List</Filter>
     </ClInclude>
-    <ClInclude Include="HeapItem.h">
-      <Filter>DataStructures\Heap</Filter>
+    <ClInclude Include="ActiveEnemyList.h">
+      <Filter>DataStructures\Linked List</Filter>
+    </ClInclude>
+    <ClInclude Include="InactiveEnemyList.h">
+      <Filter>DataStructures\Queue</Filter>
+    </ClInclude>
+    <ClInclude Include="Fighter.h">
+      <Filter>Enemies\EnemyTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="Freezer.h">
+      <Filter>Enemies\EnemyTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="Healer.h">
+      <Filter>Enemies\EnemyTypes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
