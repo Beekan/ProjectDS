@@ -22,7 +22,7 @@ class Castle
 public:
 
 	Castle();
-	void SetTowerHealth(REGION TowerRegion, double h);
+	void SetTowerHealth(double h);
 
 	//
 	// TODO: Add More Member Functions As Needed

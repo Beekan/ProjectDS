@@ -5,9 +5,6 @@
 
 //Enemies colors for next phases
 //You can choose whatever colors you like for your enemies
-const color FIGHTER_CLR = DARKBLUE;
-const color HEALER_CLR = ORANGERED;
-const color FREEZER_CLR = WHITE;
 
 // Enemy is the base class of each type of enemy
 // Enemy should be an abstract class in next phases
@@ -39,8 +36,10 @@ public:
 	void SetID(int id);
 	void SetHealth(double health);
 	void SetPriority(double pr);
-
-	int GetID();
+	void setarrivaltime(int arrivaltime);
+    void SetDistance(int d);
+	int  GetDistance() const;
+	int  GetID();
 	double GetHealth();
 	double GetPriority();
 
@@ -49,8 +48,6 @@ public:
 
 	void DecrementDist();
 
-	void SetDistance(int d);
-	int GetDistance() const;
 
 	// Virtual Functions: ----------------
 

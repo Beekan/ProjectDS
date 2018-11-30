@@ -6,7 +6,9 @@ Castle::Castle()
 {
 }
 
-void Castle::SetTowerHealth(REGION TowerRegion, double h)
+void Castle::SetTowerHealth(double h)
 {
-		Towers[TowerRegion].SetHealth(h);	
+	for(int i = 0; i < NoOfRegions; i++) {
+		Towers[i].SetHealth(h);
+	}
 }

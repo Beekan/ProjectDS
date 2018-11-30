@@ -14,14 +14,21 @@ Enemy::~Enemy()
 
 void Enemy::SetID(int id)
 {
+	ID = id;
 }
 
 void Enemy::SetHealth(double health)
 {
+	Health = health;
 }
 
 void Enemy::SetPriority(double pr)
 {
+}
+
+void Enemy::setarrivaltime(int artime)
+{
+	arrivaltime = artime;
 }
 
 int Enemy::GetID()
@@ -31,12 +38,12 @@ int Enemy::GetID()
 
 double Enemy::GetHealth()
 {
-	return 0.0;
+	return Health;
 }
 
 double Enemy::GetPriority()
 {
-	return 0.0;
+	return Priority;
 }
 
 color Enemy::GetColor() const

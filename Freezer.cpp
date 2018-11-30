@@ -4,6 +4,7 @@
 
 Freezer::Freezer()
 {
+	Clr = WHITE;
 }
 
 

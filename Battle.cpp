@@ -7,6 +7,10 @@ Battle::Battle()
 	EnemyCount = 0;
 }
 
+void Battle::readfile()
+{
+}
+
 void Battle::AddEnemy(Enemy* Ptr)
 {
 	if (EnemyCount < MaxEnemyCount) 

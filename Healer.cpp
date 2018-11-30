@@ -4,6 +4,7 @@
 
 Healer::Healer()
 {
+	Clr = ORANGERED;
 }
 
 

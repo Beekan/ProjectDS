@@ -4,6 +4,7 @@
 
 Fighter::Fighter()
 {
+	Clr = DARKBLUE;
 }
 
 

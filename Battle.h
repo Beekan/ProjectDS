@@ -2,12 +2,14 @@
 
 #include "Enemies\Enemy.h"
 #include "Castle\Castle.h"
+#include "InactiveEnemyList.h"
 
 // it is the controller of the project
 class Battle
 {
 private:
 	Castle BCastle;
+	InactiveEnemyList IEL;
 	int EnemyCount;	//the actual number of enemies in the game
 	Enemy * BEnemiesForDraw[MaxEnemyCount]; // This Array of Pointers is used for drawing elements in the GUI
 								  			// No matter what list type you are using to hold enemies, 
@@ -23,6 +25,7 @@ private:
 public:
 	
 	Battle();
+	void readfile();
 	void AddEnemy(Enemy* Ptr);
 	Castle * GetCastle();
 	void RunSimulation();
