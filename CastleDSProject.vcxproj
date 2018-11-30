@@ -279,6 +279,8 @@
     <ClCompile Include="Freezer.cpp" />
     <ClCompile Include="GUI\GUI.cpp" />
     <ClCompile Include="Healer.cpp" />
+    <ClCompile Include="heap.cpp" />
+    <ClCompile Include="Heapitem.cpp" />
     <ClCompile Include="InactiveEnemyList.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -313,8 +315,8 @@
     <ClInclude Include="Freezer.h" />
     <ClInclude Include="GUI\GUI.h" />
     <ClInclude Include="Healer.h" />
-    <ClInclude Include="Heap.h" />
-    <ClInclude Include="HeapItem.h" />
+    <ClInclude Include="heap.h" />
+    <ClInclude Include="Heapitem.h" />
     <ClInclude Include="InactiveEnemyList.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

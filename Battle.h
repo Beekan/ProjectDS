@@ -3,6 +3,7 @@
 #include "Enemies\Enemy.h"
 #include "Castle\Castle.h"
 #include "InactiveEnemyList.h"
+#include <fstream>
 
 // it is the controller of the project
 class Battle
@@ -30,6 +31,7 @@ public:
 	void readfile();
 	void AddEnemy(Enemy* Ptr);
 	Castle * GetCastle();
+	void movetoactive();
 	void RunSimulation();
 
 	void Just_A_Demo();	//just to show a demo and should be removed in phase1 1 & 2

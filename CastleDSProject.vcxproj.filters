@@ -173,6 +173,12 @@
     <ClCompile Include="Freezer.cpp">
       <Filter>Enemies\EnemyTypes</Filter>
     </ClCompile>
+    <ClCompile Include="Heapitem.cpp">
+      <Filter>DataStructures\Heap</Filter>
+    </ClCompile>
+    <ClCompile Include="heap.cpp">
+      <Filter>DataStructures\Heap</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -249,12 +255,6 @@
     <ClInclude Include="Enemies\Enemy.h">
       <Filter>Enemies</Filter>
     </ClInclude>
-    <ClInclude Include="Heap.h">
-      <Filter>DataStructures\Heap</Filter>
-    </ClInclude>
-    <ClInclude Include="HeapItem.h">
-      <Filter>DataStructures\Heap</Filter>
-    </ClInclude>
     <ClInclude Include="EnemyNode.h">
       <Filter>DataStructures\Linked List</Filter>
     </ClInclude>
@@ -272,6 +272,12 @@
     </ClInclude>
     <ClInclude Include="Healer.h">
       <Filter>Enemies\EnemyTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="Heapitem.h">
+      <Filter>DataStructures\Heap</Filter>
+    </ClInclude>
+    <ClInclude Include="heap.h">
+      <Filter>DataStructures\Heap</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

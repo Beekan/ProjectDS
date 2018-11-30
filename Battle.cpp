@@ -15,9 +15,8 @@ void Battle::readfile()
 {
 	pGUI->PrintMessage("Please, Enter the File name.");
 	string FileName = pGUI->GetString();
-	LoadFile.open(FileName);
-	double TowerHealth; 
-	int MaxEnemy, TowerPower, EnemyID,EnemyType,EnemyHealth,EnemyPower,Reloadperiod,Arrivaltime;
+	LoadFile.open(FileName); 
+	int MaxEnemy, TowerPower, EnemyID,EnemyType,EnemyHealth,EnemyPower,Reloadperiod,Arrivaltime,TowerHealth;
 	REGION EnemyRegion;
 	char Region;
 	Enemy* Enemy;
@@ -31,6 +30,7 @@ void Battle::readfile()
 	while(1) 
 	{
 		LoadFile >> EnemyID;
+		if (EnemyID = -1) { break; }
 		LoadFile >> EnemyType;
 		LoadFile >> Arrivaltime;
 		LoadFile >> EnemyHealth;
@@ -38,7 +38,6 @@ void Battle::readfile()
 		LoadFile >> Reloadperiod;
 		LoadFile >> Region;
 		EnemyRegion = static_cast<REGION>(Region);
-		if (EnemyID = -1) { break; }
 		switch (EnemyType) {
 		case 1:
 			Fighter * Fighter;
@@ -79,6 +78,11 @@ void Battle::AddEnemy(Enemy* Ptr)
 Castle * Battle::GetCastle()
 {
 	return &BCastle;
+}
+
+void Battle::movetoactive()
+{
+
 }
 
 
