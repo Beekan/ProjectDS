@@ -17,8 +17,8 @@ protected:
 	REGION Region;  //Region of this enemy
 	int Distance;	//Horizontal distance between enemy & the tower of its region
 	                //Always positive (ranges from 2 to 60)
-	double Health;	//Enemy health
-	double Priority;
+	int Health;	//Enemy health
+	int Priority;
 	int arrivaltime;
 	int power;
 	int reloadperiod;
@@ -34,8 +34,8 @@ public:
 	virtual ~Enemy();
 
 	void SetID(int id);
-	void SetHealth(double health);
-	void SetPriority(double pr);
+	void SetHealth(int health);
+	void SetPriority(int pr);
 	void setarrivaltime(int arrivaltime);
     void SetDistance(int d);
 	void SetPower(int Power);

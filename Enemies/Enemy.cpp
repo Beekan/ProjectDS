@@ -17,12 +17,12 @@ void Enemy::SetID(int id)
 	ID = id;
 }
 
-void Enemy::SetHealth(double health)
+void Enemy::SetHealth(int health)
 {
 	Health = health;
 }
 
-void Enemy::SetPriority(double pr)
+void Enemy::SetPriority(int pr)
 {
 }
 
