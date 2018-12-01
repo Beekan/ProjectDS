@@ -6,14 +6,15 @@
 #include"Healer.h"
 #include"Freezer.h"
 
+
 Battle::Battle()
 {
 	EnemyCount = 0;
 }
 
-void Battle::readfile()
+void Battle::readfile(GUI* pGUI)
 {
-	GUI * pGUI = new GUI;
+	
 	pGUI->PrintMessage("Please, Enter the File name.");
 	string FileName = pGUI->GetString();
 	LoadFile.open(FileName); 
@@ -68,6 +69,7 @@ void Battle::readfile()
 		Enemy->SetReloadPeriod(Reloadperiod);
 		IEL.enqueue(Enemy);
 	}
+	
 }
 
 void Battle::AddEnemy(Enemy* Ptr)
@@ -118,9 +120,9 @@ void Battle::movetoactive(int simulationtick)
 
 void Battle::RunSimulation()
 {
-	GUI * pGUI = new GUI;
+	GUI*  pGUI=new GUI;
 	
-	readfile();
+	readfile(pGUI);
 	pGUI->DrawBattle(BEnemiesForDraw, EnemyCount);
 	Point p;
 	pGUI->GetPointClicked(p);

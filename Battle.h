@@ -28,7 +28,7 @@ public:
 	
 	Battle();
 	ifstream LoadFile;
-	void readfile();
+	void readfile(GUI* pGUI);
 	void AddEnemy(Enemy* Ptr);
 	Castle * GetCastle();
 	void movetoactive(int simulationtick);
