@@ -6,7 +6,23 @@ Tower::Tower()
 	SetHealth(TowerInitHealth);
 }
 
-void Tower::AddEnemy(Enemy *E)
+void Tower::SetState(State S)
+{
+	currentstate = S;
+}
+
+void Tower::SetFiretype(FireType F)
+{
+	fire = F;
+
+}
+
+void Tower::SetFreezelimit(int Fz)
+{
+	freezelimit = Fz;
+}
+
+void Tower::AddEnemy(Enemy *&E)
 {
 	AEL.InsertBeg(E);
 }
@@ -33,6 +49,11 @@ void Tower::SetPower(int Power)
 double Tower::GetHealth() const
 {
 	return Health;
+}
+
+void Tower::AllAct()
+{
+	AEL.Enemymove();
 }
 
 void Tower::attack(Enemy * ActEnemies)

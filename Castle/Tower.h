@@ -20,11 +20,15 @@ class Tower
 public:
 
 	Tower();
-	void AddEnemy(Enemy*);
+	void SetState(State);
+	void SetFiretype(FireType);
+	void SetFreezelimit(int);
+    void AddEnemy(Enemy*&);
 	void SetHealth(double h);
 	void SetEnemy(int Max);
 	void SetPower(int Power);
 	double GetHealth() const;
+	void AllAct();
 	void attack(Enemy* ActEnemies); //Added by me
 	//
 	// TODO: Add More Member Functions As Needed

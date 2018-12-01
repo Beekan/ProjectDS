@@ -72,7 +72,7 @@ void Battle::readfile(GUI* pGUI)
 	
 }
 
-void Battle::AddEnemy(Enemy* Ptr)
+void Battle::AddEnemy(Enemy*& Ptr)
 {
 	if (EnemyCount < MaxEnemyCount) 
 		BEnemiesForDraw[EnemyCount++] = Ptr;
@@ -91,7 +91,6 @@ Castle * Battle::GetCastle()
 void Battle::movetoactive(int simulationtick)
 {
 	Enemy* Enemy;
-	Tower Tower;
 	REGION Region;
 	if (IEL.peekFront(Enemy)) {
 
@@ -100,8 +99,7 @@ void Battle::movetoactive(int simulationtick)
 			IEL.dequeue(Enemy);
 			Enemy->SetDistance(MaxDistance);
 			Region = Enemy->GetRegion();
-			Tower = BCastle.retTower(Region);
-			Tower.AddEnemy(Enemy);
+			BCastle.AddEnemy(Enemy);
 			this->AddEnemy(Enemy);
 		}
 	}
@@ -127,8 +125,8 @@ void Battle::RunSimulation()
 	Point p;
 	pGUI->GetPointClicked(p);
 	for (int timestep = 0; timestep < SimulationTime;timestep++) {
+		BCastle.ACT();
 		movetoactive(timestep);
-
 		pGUI->DrawBattle(BEnemiesForDraw, EnemyCount);
 		pGUI->GetPointClicked(p);
 	}

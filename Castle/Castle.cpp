@@ -4,6 +4,8 @@
 
 Castle::Castle()
 {
+	
+
 }
 
 void Castle::SetTowerHealth(double h)
@@ -23,7 +25,23 @@ void Castle::SetTowerPower(int Power) {
 	}
 }
 
+void Castle::AddEnemy(Enemy *& E)
+{
+	REGION R = E->GetRegion();
+	Towers[R].AddEnemy(E);
+}
+
 Tower Castle::retTower(REGION R)
 {
 	return Towers[R];
 }
+
+void Castle::ACT()
+{
+	for (int i = 0; i < NoOfRegions; i++) {
+		Towers[i].AllAct();
+	}
+	
+}
+
+

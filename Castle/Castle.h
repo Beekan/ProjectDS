@@ -25,7 +25,9 @@ public:
 	void SetTowerHealth(double h);
 	void SetMaxEnemy(int Max);
 	void SetTowerPower(int Power);
+	void AddEnemy(Enemy*& E);
 	Tower retTower(REGION R);
+	void ACT();
 
 	//
 	// TODO: Add More Member Functions As Needed

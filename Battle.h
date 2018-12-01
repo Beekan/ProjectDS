@@ -29,7 +29,7 @@ public:
 	Battle();
 	ifstream LoadFile;
 	void readfile(GUI* pGUI);
-	void AddEnemy(Enemy* Ptr);
+	void AddEnemy(Enemy*& Ptr);
 	Castle * GetCastle();
 	void movetoactive(int simulationtick);
 	void RunSimulation();

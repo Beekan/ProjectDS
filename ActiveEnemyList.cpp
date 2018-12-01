@@ -38,12 +38,21 @@ void ActiveEnemyList::PrintList()
 *	- data : The value to be stored in the new Enemy.
 */
 
-void ActiveEnemyList::InsertBeg(Enemy* E)
+void ActiveEnemyList::InsertBeg(Enemy* &E)
 {
 	EnemyNode *R = new EnemyNode(E);
 	R->setNext(Head);
 	Head = R;
 	count++;
+}
+
+void ActiveEnemyList::Enemymove()
+{
+	EnemyNode* p = Head;
+	while (p != NULL) {
+		p->getItem()->DecrementDist();
+		p = p->getNext();
+	}
 }
 
 
