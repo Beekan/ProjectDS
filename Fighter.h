@@ -5,6 +5,7 @@ class Fighter :public Enemy
 	
 public:
 	Fighter();
+	void Act();
 	~Fighter();
 };
 

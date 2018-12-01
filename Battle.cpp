@@ -13,13 +13,16 @@ Battle::Battle()
 
 void Battle::readfile()
 {
+	GUI * pGUI = new GUI;
 	pGUI->PrintMessage("Please, Enter the File name.");
 	string FileName = pGUI->GetString();
-	LoadFile.open(FileName); 
+	LoadFile.open("test.txt"); 
+	while (!LoadFile) { pGUI->PrintMessage("File name does not exist. Please enter a correct one"); FileName = pGUI->GetString(); LoadFile.open(FileName); }
 	int MaxEnemy, TowerPower, EnemyID,EnemyType,EnemyHealth,EnemyPower,Reloadperiod,Arrivaltime,TowerHealth;
 	REGION EnemyRegion;
 	char Region;
 	Enemy* Enemy;
+	
 	string line;
 	LoadFile >> TowerHealth;
 	LoadFile >> MaxEnemy;
@@ -29,27 +32,30 @@ void Battle::readfile()
 	BCastle.SetTowerPower(TowerPower);
 	while(1) 
 	{
+		Fighter* Fight = new Fighter;
+		Healer * Heal = new Healer;
+		Freezer * Freeze = new Freezer;
 		LoadFile >> EnemyID;
-		if (EnemyID = -1) { break; }
+		if (EnemyID == -1) { break; }
 		LoadFile >> EnemyType;
 		LoadFile >> Arrivaltime;
 		LoadFile >> EnemyHealth;
 		LoadFile >> EnemyPower;
 		LoadFile >> Reloadperiod;
 		LoadFile >> Region;
-		EnemyRegion = static_cast<REGION>(Region);
+		EnemyRegion = static_cast<REGION>(Region-65);
 		switch (EnemyType) {
 		case 1:
-			Fighter * Fighter;
-			Enemy = Fighter;
+			
+			Enemy = Fight;
 			break;
 		case 2:
-			Healer * Healer;
-			Enemy = Healer;
+			
+			Enemy = Heal;
 		    break;
 		case 3:
-			Freezer * Freezer;
-			Enemy = Freezer;
+			
+			Enemy = Freeze;
             break;
 		default:
 			break;
@@ -85,16 +91,23 @@ void Battle::movetoactive(int simulationtick)
 	Enemy* Enemy;
 	Tower Tower;
 	REGION Region;
-	IEL.peekFront(Enemy);
-	if (Enemy->GetArrivalTime() <= simulationtick) {
-		IEL.dequeue(Enemy);
-		Enemy->SetDistance(MaxDistance);
-		Region = Enemy->GetRegion();
-		Tower = BCastle.retTower(Region);
-		Tower.AddEnemy(Enemy);
-		BEnemiesForDraw[Enemy->GetID() - 1] = Enemy;
+	if (IEL.peekFront(Enemy)) {
+
+
+		if (Enemy->GetArrivalTime() <= simulationtick) {
+			IEL.dequeue(Enemy);
+			Enemy->SetDistance(MaxDistance);
+			Region = Enemy->GetRegion();
+			Tower = BCastle.retTower(Region);
+			Tower.AddEnemy(Enemy);
+			this->AddEnemy(Enemy);
+		}
+	}
+	if (IEL.peekFront(Enemy)) {
 		
-		
+		if (Enemy->GetArrivalTime() <= simulationtick) {
+			movetoactive(simulationtick);
+		}
 	}
 }
 
@@ -105,7 +118,19 @@ void Battle::movetoactive(int simulationtick)
 
 void Battle::RunSimulation()
 {
-	Just_A_Demo();
+	GUI * pGUI = new GUI;
+	
+	readfile();
+	pGUI->DrawBattle(BEnemiesForDraw, EnemyCount);
+	Point p;
+	pGUI->GetPointClicked(p);
+	for (int timestep = 0; timestep < SimulationTime;timestep++) {
+		movetoactive(timestep);
+
+		pGUI->DrawBattle(BEnemiesForDraw, EnemyCount);
+		pGUI->GetPointClicked(p);
+	}
+	//Just_A_Demo();
 }
 
 

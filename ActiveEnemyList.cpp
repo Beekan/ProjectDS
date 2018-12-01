@@ -12,7 +12,7 @@ ActiveEnemyList::ActiveEnemyList()
 
 ActiveEnemyList::~ActiveEnemyList()
 {
-	DeleteAll();
+	//DeleteAll();
 }
 
 void ActiveEnemyList::PrintList()
@@ -47,7 +47,7 @@ void ActiveEnemyList::InsertBeg(Enemy* E)
 }
 
 
-void ActiveEnemyList::DeleteAll()
+/*void ActiveEnemyList::DeleteAll()
 {
 	EnemyNode* P = Head;
 	while (Head != NULL)
@@ -57,7 +57,7 @@ void ActiveEnemyList::DeleteAll()
 		Head = P;
 	}
 	count = 0;
-}
+}*/
 
 bool ActiveEnemyList::DeleteEnemy(int ID)
 {

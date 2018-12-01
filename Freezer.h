@@ -5,6 +5,7 @@ class Freezer :
 {
 public:
 	Freezer();
+	void Act();
 	~Freezer();
 };
 

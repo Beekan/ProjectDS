@@ -5,6 +5,7 @@ class Healer :
 {
 public:
 	Healer();
+	void Act();
 	~Healer();
 };
 

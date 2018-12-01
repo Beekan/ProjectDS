@@ -13,7 +13,7 @@ public:
 	~ActiveEnemyList();
 	void PrintList();
 	void InsertBeg(Enemy* E);
-	void DeleteAll();
+	//void DeleteAll();
 	bool DeleteEnemy(int ID);
 	void InsertEnd(Enemy* E);
     bool Find(int Key);
