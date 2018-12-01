@@ -74,14 +74,17 @@ void Tower::AllAct(int EnemyCount)
 {
 	Enemy* E;
 	int count = AEL.retCount();
-	int id = rand() % EnemyCount + 1;
-	AEL.Enemymove();
-	if(!AEL.isempty()){
-		
-		if (AEL.DeleteEnemy(id, E)) {
-			KEL.InsertBeg(E);
+	for (int i = 0; i < 4; i++)
+	{
+		int id = rand() % EnemyCount + 1;
+		AEL.Enemymove();
+		if (!AEL.isempty()) {
+			if (AEL.DeleteEnemy(id, E)) {
+				KEL.InsertBeg(E);
+			}
 		}
 	}
+
 }
 
 void Tower::attack(Enemy * ActEnemies)
