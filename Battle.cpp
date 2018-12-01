@@ -16,7 +16,7 @@ void Battle::readfile()
 	GUI * pGUI = new GUI;
 	pGUI->PrintMessage("Please, Enter the File name.");
 	string FileName = pGUI->GetString();
-	LoadFile.open("test.txt"); 
+	LoadFile.open(FileName); 
 	while (!LoadFile) { pGUI->PrintMessage("File name does not exist. Please enter a correct one"); FileName = pGUI->GetString(); LoadFile.open(FileName); }
 	int MaxEnemy, TowerPower, EnemyID,EnemyType,EnemyHealth,EnemyPower,Reloadperiod,Arrivaltime,TowerHealth;
 	REGION EnemyRegion;
