@@ -12,7 +12,7 @@ ActiveEnemyList::ActiveEnemyList()
 
 ActiveEnemyList::~ActiveEnemyList()
 {
-	//DeleteAll();
+	
 }
 
 void ActiveEnemyList::PrintList()
@@ -61,36 +61,8 @@ int ActiveEnemyList::retCount()
 }
 
 
-/*void ActiveEnemyList::DeleteAll()
-{
-	EnemyNode* P = Head;
-	while (Head != NULL)
-	{
-		P = Head->getNext();
-		delete Head;
-		Head = P;
-	}
-	count = 0;
-}*/
-
 bool ActiveEnemyList::DeleteEnemy(int ID,Enemy*& E)
 {
-	/*if (isempty())
-		return false;
-
-	EnemyNode* nodeToDeletePtr = frontPtr;
-	frntEntry = frontPtr->getItem();
-	frontPtr = frontPtr->getNext();
-	// InactiveEnemyList is not empty; remove front
-	if (nodeToDeletePtr == backPtr)	 // Special case: one node in InactiveEnemyList
-		backPtr = nullptr;
-
-	// Free memory reserved by the deInactiveEnemyListd node
-	delete nodeToDeletePtr;
-
-
-	return true;*/
-
 	EnemyNode* P = Head;
 	while (P != NULL)
 	{
@@ -113,32 +85,6 @@ bool ActiveEnemyList::DeleteEnemy(int ID,Enemy*& E)
 		P = P->getNext();
 	}
 	return false;
-	/*struct Node* temp = *head_ref, *prev;
-
-	// If head node itself holds the key to be deleted 
-	if (P != NULL && P->getItem()->GetID() == ID)
-	{
-		Head = P->getNext();   // Changed head 
-		free(P);               // free old head 
-		return;
-	}
-
-	// Search for the key to be deleted, keep track of the 
-	// previous node as we need to change 'prev->next' 
-	while (temp != NULL && P->getItem()->GetID() != ID)
-	{
-		prev = temp;
-		temp = temp->next;
-	}
-
-	// If key was not present in linked list 
-	if (temp == NULL) return;
-
-	// Unlink the node from linked list 
-	prev->next = temp->next;
-
-	free(temp);  // Free memory 
-}*/
 }
 
 bool ActiveEnemyList::isempty()
