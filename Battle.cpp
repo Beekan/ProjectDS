@@ -217,3 +217,19 @@ void Battle::Just_A_Demo()
 
 	delete pGUI;
 }
+void SortNulls(Enemy* arr[], int &size)
+{
+	Enemy* arr2[MaxEnemyCount];
+	Enemy * temp;
+	for (int i = 0; i < MaxEnemyCount; i++)
+	{
+		if (arr[i] == NULL)
+		{
+			temp = arr[size];
+			arr[size] = arr[i];
+			arr[i] = temp;
+			size--;
+		}
+			
+	}
+}
