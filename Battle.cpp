@@ -127,6 +127,7 @@ void Battle::RunSimulation()
 
 		BCastle.ACT();
 		movetoactive(timestep);
+		SortNulls(BEnemiesForDraw, EnemyCount);
 		pGUI->DrawBattle(BEnemiesForDraw, EnemyCount);
 		pGUI->GetPointClicked(p);
 	}
@@ -217,7 +218,7 @@ void Battle::Just_A_Demo()
 
 	delete pGUI;
 }
-void SortNulls(Enemy* arr[], int &size)
+void Battle::SortNulls(Enemy* arr[], int &size)
 {
 	Enemy* arr2[MaxEnemyCount];
 	Enemy * temp;

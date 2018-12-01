@@ -2,6 +2,7 @@
 #include "..\Defs.h"
 #include"../ActiveEnemyList.h"
 #include "../Enemies/Enemy.h"
+
 class Tower
 {
 	double Health;

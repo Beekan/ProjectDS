@@ -1,5 +1,8 @@
 #include "Tower.h"
 #include<ctime>
+#include<cstdlib>
+
+
 
 Tower::Tower()
 {
@@ -58,11 +61,12 @@ double Tower::GetHealth() const
 
 void Tower::AllAct()
 {
+
 	int count = AEL.retCount();
 	int id = rand() % count + 1;
 	AEL.Enemymove();
 	if(!AEL.isempty()){
-	AEL.DeleteEnemy(id);}
+	AEL.DeleteEnemy(3);}
 }
 
 void Tower::attack(Enemy * ActEnemies)
