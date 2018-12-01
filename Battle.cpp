@@ -91,21 +91,20 @@ Castle * Battle::GetCastle()
 void Battle::movetoactive(int simulationtick)
 {
 	Enemy* Enemy;
-	REGION Region;
-	if (IEL.peekFront(Enemy)) {
-
-
-		if (Enemy->GetArrivalTime() <= simulationtick) {
+	if (IEL.peekFront(Enemy))
+	{
+        if (Enemy->GetArrivalTime() <= simulationtick)
+		{
 			IEL.dequeue(Enemy);
 			Enemy->SetDistance(MaxDistance);
-			Region = Enemy->GetRegion();
 			BCastle.AddEnemy(Enemy);
 			this->AddEnemy(Enemy);
 		}
 	}
-	if (IEL.peekFront(Enemy)) {
-		
-		if (Enemy->GetArrivalTime() <= simulationtick) {
+	if (IEL.peekFront(Enemy)) 
+	{
+	    if (Enemy->GetArrivalTime() <= simulationtick) 
+		{
 			movetoactive(simulationtick);
 		}
 	}

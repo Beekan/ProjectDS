@@ -1,5 +1,5 @@
 #include "Tower.h"
-
+#include<ctime>
 
 Tower::Tower()
 {
@@ -53,7 +53,10 @@ double Tower::GetHealth() const
 
 void Tower::AllAct()
 {
+	int count = AEL.retCount();
+
 	AEL.Enemymove();
+	AEL.DeleteEnemy();
 }
 
 void Tower::attack(Enemy * ActEnemies)

@@ -225,8 +225,9 @@ void GUI::DrawEnemies(Enemy* enemies[], int size) const
 		{
 			CountEnemies = 0;
 
-			for(int i = 0 ; i < size ; i++)
-			{	
+			for(int i = 0 ; i < MaxEnemyCount ; i++)
+			{
+				if (enemies[i] == NULL) { continue; }
 				if(enemies[i]->GetDistance() == distance && enemies[i]->GetRegion() == region)
 				{
 					CountEnemies++;
@@ -244,8 +245,9 @@ void GUI::DrawEnemies(Enemy* enemies[], int size) const
 			{
 				CountEnemies=0;
 
-				for(int i = 0 ; i < size ; i++)
-				{	
+				for(int i = 0 ; i < MaxEnemyCount; i++)
+				{
+					if (enemies[i] == NULL) { continue; }
 					if(enemies[i]->GetDistance() == distance && enemies[i]->GetRegion() == region)
 					{
 						DrawEnemy(*(enemies[i]), CountEnemies + 1);

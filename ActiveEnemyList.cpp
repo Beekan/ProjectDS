@@ -55,6 +55,11 @@ void ActiveEnemyList::Enemymove()
 	}
 }
 
+int ActiveEnemyList::retCount()
+{
+	return count;
+}
+
 
 /*void ActiveEnemyList::DeleteAll()
 {

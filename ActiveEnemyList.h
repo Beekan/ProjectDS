@@ -14,8 +14,10 @@ public:
 	void PrintList();
 	void InsertBeg(Enemy*& E);
 	void Enemymove();
-	//void DeleteAll();
+	int retCount();
 	bool DeleteEnemy(int ID);
+	//void DeleteAll();
+	
 	void InsertEnd(Enemy* E);
     bool Find(int Key);
 };
