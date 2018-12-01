@@ -118,6 +118,14 @@ void Battle::movetoactive(int simulationtick)
 void Battle::RunSimulation()
 {
 	GUI*  pGUI=new GUI;
+	int towerA, towerB, towerC, towerD;
+	int enemyA, enemyB, enemyC, enemyD;
+	int killedA, killedB, killedC, killedD;
+	string info;
+	string einfo;
+	string kinfo;
+	string ActiveEnemies;
+
 	
 	readfile(pGUI);
 	pGUI->DrawBattle(BEnemiesForDraw, EnemyCount);
@@ -125,14 +133,24 @@ void Battle::RunSimulation()
 	pGUI->GetPointClicked(p);
 	for (int timestep = 0; timestep < SimulationTime;timestep++) {
 
-		BCastle.ACT();
+		BCastle.ACT(EnemyCount);
+
+		BCastle.gettowerhealth(towerA, towerB, towerC, towerD);
+		BCastle.retCount(enemyA, enemyB, enemyC, enemyD);
+		BCastle.retKilled(killedA, killedB, killedC, killedD);
+		info = "Tower A health= " + to_string(towerA) + " Tower B health= " + to_string(towerB) + " Tower C health= " + to_string(towerC) + "Tower D health= " + to_string(towerD);
+		einfo= "Tower A enemy= " + to_string(enemyA) + " Tower B enemy= " + to_string(enemyB) + " Tower C enemy= " + to_string(enemyC) + "Tower D enemy= " + to_string(enemyD);
+		kinfo= "Tower A killed= " + to_string(killedA) + " Tower B killed= " + to_string(killedB) + " Tower C killed= " + to_string(killedC) + "Tower D killed= " + to_string(killedD);
 		movetoactive(timestep);
 		SortNulls(BEnemiesForDraw, EnemyCount);
 		pGUI->DrawBattle(BEnemiesForDraw, EnemyCount);
+		
+		pGUI->PrintMessage(info+"\n"+einfo+"\n"+kinfo);
 		pGUI->GetPointClicked(p);
 	}
 	//Just_A_Demo();
 }
+
 
 
 //This is just a demo function for project introductory phase

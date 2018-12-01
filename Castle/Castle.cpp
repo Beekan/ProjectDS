@@ -31,16 +31,43 @@ void Castle::AddEnemy(Enemy *& E)
 	Towers[R].AddEnemy(E);
 }
 
+void Castle::gettowerhealth(int & A, int & B, int & C, int & D)
+{
+	A = Towers[0].GetHealth();
+	B= Towers[1].GetHealth();
+	C= Towers[2].GetHealth();
+	D= Towers[3].GetHealth();
+
+}
+
+void Castle::retCount(int& a,int& b,int& c,int& d)
+{
+	a = Towers[0].getAELcount();
+	b = Towers[1].getAELcount();
+	c = Towers[2].getAELcount();
+	d = Towers[3].getAELcount();
+		
+}
+
+void Castle::retKilled(int & a, int & b, int & c, int & d)
+{
+	a = Towers[0].getKilled();
+	b = Towers[1].getKilled();
+	c = Towers[2].getKilled();
+	d = Towers[3].getKilled();
+
+}
+
 Tower Castle::retTower(REGION R)
 {
 	return Towers[R];
 }
 
-void Castle::ACT()
+void Castle::ACT(int EnemyCount)
 {
 	for (int i = 0; i < NoOfRegions; i++) {
 		if (!Towers[i].AELisempty()) {
-			Towers[i].AllAct();
+			Towers[i].AllAct(EnemyCount);
 		}
 	}
 }

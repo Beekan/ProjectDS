@@ -11,6 +11,7 @@ class Tower
 	FireType fire;
 	int firepower;
 	int freezelimit;
+	int killed;
 	ActiveEnemyList AEL;
 
 
@@ -28,9 +29,11 @@ public:
 	void SetHealth(double h);
 	void SetEnemy(int Max);
 	void SetPower(int Power);
+	int getKilled();
+	int getAELcount();
 	bool AELisempty();
 	double GetHealth() const;
-	void AllAct();
+	void AllAct(int);
 	void attack(Enemy* ActEnemies); //Added by me
 	//
 	// TODO: Add More Member Functions As Needed

@@ -33,6 +33,7 @@ public:
 	Castle * GetCastle();
 	void movetoactive(int simulationtick);
 	void RunSimulation();
+	
 	void SortNulls(Enemy* arr[], int &size);
 
 	void Just_A_Demo();	//just to show a demo and should be removed in phase1 1 & 2
