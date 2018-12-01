@@ -12,7 +12,7 @@ private:
 	Castle BCastle;
 	GUI* pGUI;
 	InactiveEnemyList IEL;
-	int EnemyCount;	//the actual number of enemies in the game
+	int EnemyCount;	                         //the actual number of enemies in the game
 	Enemy * BEnemiesForDraw[MaxEnemyCount]; // This Array of Pointers is used for drawing elements in the GUI
 								  			// No matter what list type you are using to hold enemies, 
 											// you must pass the enemies to the GUI function as an array of enemy pointers. 
@@ -33,10 +33,9 @@ public:
 	Castle * GetCastle();
 	void movetoactive(int simulationtick);
 	void RunSimulation();
-	
 	void SortNulls(Enemy* arr[], int &size);
 
-	void Just_A_Demo();	//just to show a demo and should be removed in phase1 1 & 2
+	//void Just_A_Demo();	//just to show a demo and should be removed in phase1 1 & 2
 
 	//
 	// TODO: Add More Member Functions As Needed

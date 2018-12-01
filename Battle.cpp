@@ -23,7 +23,6 @@ void Battle::readfile(GUI* pGUI)
 	REGION EnemyRegion;
 	char Region;
 	Enemy* Enemy;
-	
 	string line;
 	LoadFile >> TowerHealth;
 	LoadFile >> MaxEnemy;
@@ -148,14 +147,14 @@ void Battle::RunSimulation()
 		pGUI->PrintMessage("\n"+kinfo);
 		pGUI->GetPointClicked(p);
 	}
-	//Just_A_Demo();
+
 }
 
 
 
 //This is just a demo function for project introductory phase
 //It should be removed in phases 1&2
-void Battle::Just_A_Demo()
+/*void Battle::Just_A_Demo()
 {
 	
 	std::cout<<"\nWelcome to Castle Battle:\n";
@@ -203,7 +202,7 @@ void Battle::Just_A_Demo()
 	AddEnemy(&e8);
 	AddEnemy(&e9);
 	AddEnemy(&e10);
-	AddEnemy(&e11);*/
+	AddEnemy(&e11)
 
 	// Drawing the battle
 	pGUI->DrawBattle(BEnemiesForDraw, EnemyCount);
@@ -226,7 +225,7 @@ void Battle::Just_A_Demo()
 		e7.DecrementDist();
 		e8.DecrementDist();
 		e9.DecrementDist();
-		e10.DecrementDist();*/
+		e10.DecrementDist();
 
 		// Redraw the enemies
 		pGUI->DrawBattle(BEnemiesForDraw, EnemyCount);
@@ -235,7 +234,7 @@ void Battle::Just_A_Demo()
 	}
 
 	delete pGUI;
-}
+}*/
 void Battle::SortNulls(Enemy* arr[], int &size)
 {
 	Enemy* arr2[MaxEnemyCount];

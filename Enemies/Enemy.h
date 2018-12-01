@@ -17,7 +17,7 @@ protected:
 	REGION Region;  //Region of this enemy
 	int Distance;	//Horizontal distance between enemy & the tower of its region
 	                //Always positive (ranges from 2 to 60)
-	int Health;	//Enemy health
+	int Health;	    //Enemy health
 	int Priority;
 	int arrivaltime;
 	int power;

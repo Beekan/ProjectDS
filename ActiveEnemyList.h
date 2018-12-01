@@ -18,7 +18,7 @@ public:
 	int retCount();
 	bool DeleteEnemy(int ID, Enemy*& E);
 	bool isempty();
-	//void DeleteAll();
+	
 	
 	void InsertEnd(Enemy* E);
     bool Find(int Key);
