@@ -145,7 +145,7 @@ void Battle::RunSimulation()
 		SortNulls(BEnemiesForDraw, EnemyCount);
 		pGUI->DrawBattle(BEnemiesForDraw, EnemyCount);
 		
-		pGUI->PrintMessage(info+"\n"+einfo+"\n"+kinfo);
+		pGUI->PrintMessage("\n"+kinfo);
 		pGUI->GetPointClicked(p);
 	}
 	//Just_A_Demo();

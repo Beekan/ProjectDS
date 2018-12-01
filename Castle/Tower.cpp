@@ -52,7 +52,7 @@ void Tower::SetPower(int Power)
 
 int Tower::getKilled()
 {
-	return killed;
+	return KEL.retCount();
 }
 
 int Tower::getAELcount()
@@ -72,13 +72,15 @@ double Tower::GetHealth() const
 
 void Tower::AllAct(int EnemyCount)
 {
-
+	Enemy* E;
 	int count = AEL.retCount();
 	int id = rand() % EnemyCount + 1;
 	AEL.Enemymove();
 	if(!AEL.isempty()){
-	AEL.DeleteEnemy(id);
-	killed++;
+		
+		if (AEL.DeleteEnemy(id, E)) {
+			KEL.InsertBeg(E);
+		}
 	}
 }
 

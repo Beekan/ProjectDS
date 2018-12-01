@@ -3,6 +3,7 @@
 #include"../ActiveEnemyList.h"
 #include "../Enemies/Enemy.h"
 
+
 class Tower
 {
 	double Health;
@@ -12,7 +13,9 @@ class Tower
 	int firepower;
 	int freezelimit;
 	int killed;
+	int totaldamage;
 	ActiveEnemyList AEL;
+	ActiveEnemyList KEL;
 
 
 	//

@@ -3,6 +3,7 @@
 #include "Enemies\Enemy.h"
 #include "EnemyNode.h"
 
+
 class ActiveEnemyList
 {
 private:
@@ -15,7 +16,7 @@ public:
 	void InsertBeg(Enemy*& E);
 	void Enemymove();
 	int retCount();
-	bool DeleteEnemy(int ID);
+	bool DeleteEnemy(int ID, Enemy*& E);
 	bool isempty();
 	//void DeleteAll();
 	

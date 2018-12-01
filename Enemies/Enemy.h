@@ -23,6 +23,10 @@ protected:
 	int power;
 	int reloadperiod;
 	State Currentstate;
+	int firstshotdelay;
+	int killdelay;
+	int lifetime;
+
 
 	//
 	// TODO: Add More Data Members As Needed

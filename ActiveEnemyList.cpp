@@ -73,12 +73,29 @@ int ActiveEnemyList::retCount()
 	count = 0;
 }*/
 
-bool ActiveEnemyList::DeleteEnemy(int ID)
+bool ActiveEnemyList::DeleteEnemy(int ID,Enemy*& E)
 {
+	/*if (isempty())
+		return false;
+
+	EnemyNode* nodeToDeletePtr = frontPtr;
+	frntEntry = frontPtr->getItem();
+	frontPtr = frontPtr->getNext();
+	// InactiveEnemyList is not empty; remove front
+	if (nodeToDeletePtr == backPtr)	 // Special case: one node in InactiveEnemyList
+		backPtr = nullptr;
+
+	// Free memory reserved by the deInactiveEnemyListd node
+	delete nodeToDeletePtr;
+
+
+	return true;*/
+
 	EnemyNode* P = Head;
 	while (P != NULL)
 	{
 		if (P->getItem()->GetID() == ID) {
+			E = P->getItem();
 			Head = Head->getNext();
 			delete P;
 			count--;
@@ -87,6 +104,7 @@ bool ActiveEnemyList::DeleteEnemy(int ID)
 		if (P->getNext() == NULL) { break; }
 		if (P->getNext()->getItem()->GetID() == ID)
 		{
+			E = P->getNext()->getItem();
 			P->setNext(P->getNext()->getNext());
 			delete P->getNext();
 			count--;
