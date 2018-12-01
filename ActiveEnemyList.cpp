@@ -90,4 +90,9 @@ bool ActiveEnemyList::DeleteEnemy(int ID)
 	return false;
 }
 
+bool ActiveEnemyList::isempty()
+{
+	return !Head;
+}
+
 	

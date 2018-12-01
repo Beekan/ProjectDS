@@ -124,6 +124,7 @@ void Battle::RunSimulation()
 	Point p;
 	pGUI->GetPointClicked(p);
 	for (int timestep = 0; timestep < SimulationTime;timestep++) {
+
 		BCastle.ACT();
 		movetoactive(timestep);
 		pGUI->DrawBattle(BEnemiesForDraw, EnemyCount);

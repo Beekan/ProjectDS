@@ -39,9 +39,10 @@ Tower Castle::retTower(REGION R)
 void Castle::ACT()
 {
 	for (int i = 0; i < NoOfRegions; i++) {
-		Towers[i].AllAct();
+		if (!Towers[i].AELisempty()) {
+			Towers[i].AllAct();
+		}
 	}
-	
 }
 
 

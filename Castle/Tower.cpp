@@ -46,6 +46,11 @@ void Tower::SetPower(int Power)
 	firepower = Power;
 }
 
+bool Tower::AELisempty()
+{
+	return AEL.isempty();
+}
+
 double Tower::GetHealth() const
 {
 	return Health;
@@ -54,9 +59,10 @@ double Tower::GetHealth() const
 void Tower::AllAct()
 {
 	int count = AEL.retCount();
-
+	int id = rand() % count + 1;
 	AEL.Enemymove();
-	AEL.DeleteEnemy();
+	if(!AEL.isempty()){
+	AEL.DeleteEnemy(id);}
 }
 
 void Tower::attack(Enemy * ActEnemies)

@@ -16,6 +16,7 @@ public:
 	void Enemymove();
 	int retCount();
 	bool DeleteEnemy(int ID);
+	bool isempty();
 	//void DeleteAll();
 	
 	void InsertEnd(Enemy* E);
