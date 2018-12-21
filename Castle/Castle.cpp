@@ -64,11 +64,11 @@ Tower Castle::retTower(REGION R)
 	return Towers[R];
 }
 
-void Castle::ACT(int EnemyCount)
+void Castle::ACT(int timestep)
 {
 	for (int i = 0; i < NoOfRegions; i++) {
 		if (!Towers[i].AELisempty()) {
-			Towers[i].AllAct(EnemyCount);
+			Towers[i].AllAct(timestep);
 		}
 	}
 }

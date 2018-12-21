@@ -16,6 +16,17 @@ Enemy::~Enemy()
 {
 }
 
+void Enemy::setFSD(int f)
+{
+	firstshotdelay = f;
+}
+
+void Enemy::setKD(int k)
+{
+	killdelay = k;
+	lifetime = killdelay + firstshotdelay;
+}
+
 void Enemy::setTowerpointer(Tower * t)
 {
 	T = t;
@@ -127,6 +138,21 @@ void Enemy::setsteptimer(int s)
 void Enemy::setfreezetimer(int f)
 {
 	freezetimer = f;
+}
+
+int Enemy::getFSD()
+{
+	return firstshotdelay;
+}
+
+int Enemy::getKD()
+{
+	return killdelay;
+}
+
+int Enemy::getLT()
+{
+	return lifetime;
 }
 
 int Enemy::getsteptimer()

@@ -12,13 +12,18 @@ Tower::Tower()
 	freezelimit = (20/100)*0.25*TowerInitHealth;
 	killed = 0;
 	freezevalue = 0;
+	totaldamage = 0;
 }
 
-void Tower::attack()
+void Tower::settotaldamage(double d)
+{
+	totaldamage = d;
+}
+
+void Tower::attack(int timestep)
 {
 	heap h;
 	EnemyNode* EN;
-	Heapitem* HI;
 	Enemy* E;
 	double health;
 	double distance;
@@ -33,12 +38,13 @@ void Tower::attack()
 			h.Enqueue(EN->getItem()->Getpriority(), EN->getItem());
 			EN = EN->getNext();
 		}
-		for (int i = 0; i < count-1; i++) {
-			HI = h.Dequeue();
+		for (int i = 0; i < count; i++) {
+			Heapitem* HI = new Heapitem();
+			HI=h.Dequeue();
 			E = HI->getData();
 			if (firetype <= 20) {
 				if (E->Getfreezetimer() == 0)
-					E->setfreezetimer(firepower);
+					E->setfreezetimer(firepower/2);
 			}
 			else if (firetype > 20) {
 				if (dynamic_cast<Healer*>(E))
@@ -48,6 +54,10 @@ void Tower::attack()
 				damage = (1 / distance)*firepower*(1 / k);
 				health = health - damage;
 				E->SetHealth(health);
+				totaldamage = totaldamage + damage;
+				if (E->getFSD() == 0)
+					E->setFSD(timestep);
+				
 			}
 
 		}
@@ -115,6 +125,11 @@ int Tower::getKilled()
 	return KEL.retCount();
 }
 
+double Tower::gettotaldamage()
+{
+	return totaldamage;
+}
+
 double Tower::getHealth()
 {
 	return Health;
@@ -150,18 +165,20 @@ double Tower::GetHealth() const
 	return Health;
 }
 
-void Tower::AllAct(int EnemyCount)
+void Tower::AllAct(int timestep)
 {
 	Enemy* E;
 	Tower* T = this;
 	AEL.Enemymove();
 	get_attacked();
-	attack();
+	attack(timestep);
 
 	if (!AEL.isempty()) {
 		if (AEL.DeleteEnemy(E))
 		{
-				KEL.InsertBeg(E);
+			E->setKD(timestep);
+			KEL.InsertBeg(E);
+
 		}
 	}
 	

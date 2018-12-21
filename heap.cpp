@@ -127,7 +127,7 @@ Heapitem *heap::Dequeue()
 	m_Elements[0] = m_Elements[m_iNumElements];
 	// Reheap the tree
 	ReheapDown(0, m_iNumElements - 1);
-	if (m_iNumElements == 0)
+	if (m_iNumElements < 0)
 		return NULL;
 	else
 		return temp;

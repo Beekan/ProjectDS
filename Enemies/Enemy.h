@@ -45,6 +45,8 @@ public:
 	Enemy(Tower* t);
 	Enemy(color r_c, REGION r_region, int d = MaxDistance);
 	virtual ~Enemy();
+	void setFSD(int);
+	void setKD(int);
 	void setTowerpointer(Tower* t);
 	void setOriginalhealth(int OR);
 	void SetID(int id);
@@ -58,6 +60,9 @@ public:
 	void updatepriority();
 	void setsteptimer(int s);
 	void setfreezetimer(int f);
+	int getFSD();
+	int getKD();
+	int getLT();
 	int getsteptimer();
 	int  GetDistance() const;
 	int GetArrivalTime();

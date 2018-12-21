@@ -12,8 +12,8 @@ class Tower
 	int firepower;
 	double freezelimit;
 	double freezevalue;
+	double totaldamage;
 	int killed;
-	int totaldamage;
 	ActiveEnemyList AEL;
 	ActiveEnemyList KEL;
 
@@ -25,7 +25,8 @@ class Tower
 public:
 
 	Tower();
-	void attack();
+	void settotaldamage(double);
+	void attack(int);
 	void get_attacked();
 	void SetState(State);
 	void SetFiretype(FireType);
@@ -36,6 +37,7 @@ public:
 	void SetPower(int Power);
 	void setfreezevalue(double f);
 	int getKilled();
+	double gettotaldamage();
 	double getHealth();
 	int getAELcount();
 	double getfreezelimit();

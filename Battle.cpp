@@ -62,7 +62,6 @@ void Battle::readfile(GUI* pGUI)
 		default:
 			break;
 		}
-		T = &BCastle.retTower(EnemyRegion);
 		Enemy->setarrivaltime(Arrivaltime);
 		Enemy->setOriginalhealth(EnemyHealth);
 		Enemy->SetHealth(EnemyHealth);
@@ -136,7 +135,7 @@ void Battle::RunSimulation()
 	pGUI->GetPointClicked(p);
 	for (int timestep = 0; timestep < SimulationTime;timestep++) {
 
-		BCastle.ACT(EnemyCount);
+		BCastle.ACT(timestep);
 
 		BCastle.gettowerhealth(towerA, towerB, towerC, towerD);
 		BCastle.retCount(enemyA, enemyB, enemyC, enemyD);
