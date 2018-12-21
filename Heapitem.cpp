@@ -11,7 +11,7 @@ Heapitem::Heapitem()
 // Constructor
 //-----------------------------------
 
-Heapitem::Heapitem(int key, Enemy* data)
+Heapitem::Heapitem(double key, Enemy* data)
 {
 	m_iKey = key;
 	m_dData = data;
@@ -38,7 +38,7 @@ int Heapitem::getKey()
 // Set the priority key value
 //-----------------------------------
 
-void Heapitem::setKey(int key)
+void Heapitem::setKey(double key)
 {
 	m_iKey = key;
 }

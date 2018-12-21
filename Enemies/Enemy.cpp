@@ -1,5 +1,9 @@
 #include "Enemy.h"
-Enemy::Enemy(){}
+#include "..\Castle\Tower.h"
+#include "..\ActiveEnemyList.h"
+Enemy::Enemy(Tower* t){
+	T = t;
+}
 
 Enemy::Enemy(color r_c, REGION r_region, int d)
 {
@@ -12,12 +16,22 @@ Enemy::~Enemy()
 {
 }
 
+void Enemy::setTowerpointer(Tower * t)
+{
+	T = t;
+}
+
+void Enemy::setOriginalhealth(int OR)
+{
+	originalHealth = OR;
+}
+
 void Enemy::SetID(int id)
 {
 	ID = id;
 }
 
-void Enemy::SetHealth(int health)
+void Enemy::SetHealth(double health)
 {
 	Health = health;
 }
@@ -36,15 +50,27 @@ int Enemy::GetID()
 	return ID;
 }
 
+int Enemy::Getfreezetimer()
+{
+	return freezetimer;
+}
+
+int Enemy::GetOriginalHealth()
+{
+	return originalHealth;
+}
+
+double Enemy::Getpriority()
+{
+	return Priority;
+}
+
 double Enemy::GetHealth()
 {
 	return Health;
 }
 
-double Enemy::GetPriority()
-{
-	return Priority;
-}
+
 
 color Enemy::GetColor() const
 {
@@ -83,6 +109,29 @@ void Enemy::SetRegion(REGION region)
 void Enemy::SetReloadPeriod(int Reload)
 {
 	reloadperiod = Reload;
+	
+}
+
+void Enemy::updatepriority()
+{
+	if (freezetimer != 0)
+		Priority = 0;
+	Priority = (1 / Distance) + Health + (reloadperiod - reloadtimer);
+}
+
+void Enemy::setsteptimer(int s)
+{
+	steptimer = s;
+}
+
+void Enemy::setfreezetimer(int f)
+{
+	freezetimer = f;
+}
+
+int Enemy::getsteptimer()
+{
+	return steptimer;
 }
 
 int Enemy::GetDistance() const

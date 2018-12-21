@@ -26,7 +26,7 @@ public:
 	void SetMaxEnemy(int Max);
 	void SetTowerPower(int Power);
 	void AddEnemy(Enemy*& E);
-	void gettowerhealth(int& A, int& B, int& C, int& D);
+	void gettowerhealth(double& A, double& B, double& C, double& D);
 	void retCount(int& a, int& b, int& c, int& d);
 	void retKilled(int& a, int& b, int& c, int& d);
 	Tower retTower(REGION R);

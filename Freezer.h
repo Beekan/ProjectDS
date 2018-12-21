@@ -4,8 +4,9 @@ class Freezer :
 	public Enemy
 {
 public:
-	Freezer();
-	void Act();
+	Freezer(Tower* t);
+	
+	void Act(Tower* &T);
 	~Freezer();
 };
 

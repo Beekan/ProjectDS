@@ -27,6 +27,7 @@ private:
 public:
 	
 	Battle();
+	void fight();
 	ifstream LoadFile;
 	void readfile(GUI* pGUI);
 	void AddEnemy(Enemy*& Ptr);

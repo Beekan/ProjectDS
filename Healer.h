@@ -4,8 +4,8 @@ class Healer :
 	public Enemy
 {
 public:
-	Healer();
-	void Act();
+	Healer(Tower* t);
+	void Act(Tower* &T);
 	~Healer();
 };
 

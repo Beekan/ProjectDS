@@ -106,7 +106,7 @@ bool heap::Enqueue(Heapitem* item)
 // Add an item to the heap
 //---------------------------------------
 
-bool heap::Enqueue(int key, Enemy* data)
+bool heap::Enqueue(double key, Enemy* data)
 {
 	bool retVal;
 	Heapitem *temp = new Heapitem(key, data);

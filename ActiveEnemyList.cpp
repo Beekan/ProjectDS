@@ -49,11 +49,28 @@ void ActiveEnemyList::InsertBeg(Enemy* &E)
 void ActiveEnemyList::Enemymove()
 {
 	EnemyNode* p = Head;
+	int s;
 	while (p != NULL) {
-		p->getItem()->DecrementDist();
+		if (p->getItem()->Getfreezetimer() == 0) {
+			if (p->getItem()->GetHealth() / p->getItem()->GetOriginalHealth() < 0.5) {
+				s = p->getItem()->getsteptimer();
+				p->getItem()->setsteptimer(s++);
+			}
+			if (p->getItem()->getsteptimer() % 2 == 0)
+				p->getItem()->DecrementDist();
+		}
 		p = p->getNext();
 	}
 }
+
+/*void ActiveEnemyList::Enemyattack()
+{
+	EnemyNode* p = Head;
+	while (p) {
+		p->getItem()->Act();
+		p = p->getNext();
+    }
+}*/
 
 int ActiveEnemyList::retCount()
 {
@@ -61,12 +78,12 @@ int ActiveEnemyList::retCount()
 }
 
 
-bool ActiveEnemyList::DeleteEnemy(int ID,Enemy*& E)
+bool ActiveEnemyList::DeleteEnemy(Enemy*& E)
 {
 	EnemyNode* P = Head;
 	while (P != NULL)
 	{
-		if (P->getItem()->GetID() == ID) {
+		if (P->getItem()->GetHealth() == 0) {
 			E = P->getItem();
 			Head = Head->getNext();
 			delete P;
@@ -74,7 +91,7 @@ bool ActiveEnemyList::DeleteEnemy(int ID,Enemy*& E)
 			return true;
 		}
 		if (P->getNext() == NULL) { break; }
-		if (P->getNext()->getItem()->GetID() == ID)
+		if (P->getNext()->getItem()->GetHealth() == 0)
 		{
 			E = P->getNext()->getItem();
 			P->setNext(P->getNext()->getNext());
@@ -90,6 +107,11 @@ bool ActiveEnemyList::DeleteEnemy(int ID,Enemy*& E)
 bool ActiveEnemyList::isempty()
 {
 	return !Head;
+}
+
+EnemyNode* ActiveEnemyList::retHead()
+{
+	return Head;
 }
 
 	

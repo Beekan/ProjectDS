@@ -4,8 +4,8 @@ class Fighter :public Enemy
 {
 	
 public:
-	Fighter();
-	void Act();
+	Fighter(Tower* t);
+	void Act(Tower* &T);
 	~Fighter();
 };
 

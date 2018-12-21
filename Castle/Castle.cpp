@@ -12,6 +12,7 @@ void Castle::SetTowerHealth(double h)
 {
 	for(int i = 0; i < NoOfRegions; i++) {
 		Towers[i].SetHealth(h);
+		Towers[i].SetFreezelimit(h);
 	}
 }
 void Castle::SetMaxEnemy(int Max) {
@@ -31,7 +32,7 @@ void Castle::AddEnemy(Enemy *& E)
 	Towers[R].AddEnemy(E);
 }
 
-void Castle::gettowerhealth(int & A, int & B, int & C, int & D)
+void Castle::gettowerhealth(double & A, double & B, double & C, double & D)
 {
 	A = Towers[0].GetHealth();
 	B= Towers[1].GetHealth();

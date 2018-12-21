@@ -16,8 +16,9 @@ public:
 	void InsertBeg(Enemy*& E);
 	void Enemymove();
 	int retCount();
-	bool DeleteEnemy(int ID, Enemy*& E);
+	bool DeleteEnemy(Enemy*& E);
 	bool isempty();
+	EnemyNode* retHead();
 	
 	
 	void InsertEnd(Enemy* E);

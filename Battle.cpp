@@ -24,6 +24,7 @@ void Battle::readfile(GUI* pGUI)
 	char Region;
 	Enemy* Enemy;
 	string line;
+	Tower* T;
 	LoadFile >> TowerHealth;
 	LoadFile >> MaxEnemy;
 	LoadFile >> TowerPower;
@@ -32,9 +33,7 @@ void Battle::readfile(GUI* pGUI)
 	BCastle.SetTowerPower(TowerPower);
 	while(1) 
 	{
-		Fighter* Fight = new Fighter;
-		Healer * Heal = new Healer;
-		Freezer * Freeze = new Freezer;
+		
 		LoadFile >> EnemyID;
 		if (EnemyID == -1) { break; }
 		LoadFile >> EnemyType;
@@ -44,6 +43,9 @@ void Battle::readfile(GUI* pGUI)
 		LoadFile >> Reloadperiod;
 		LoadFile >> Region;
 		EnemyRegion = static_cast<REGION>(Region-65);
+		Fighter* Fight = new Fighter(&BCastle.retTower(EnemyRegion));
+		Healer * Heal = new Healer(&BCastle.retTower(EnemyRegion));
+		Freezer * Freeze = new Freezer(&BCastle.retTower(EnemyRegion));
 		switch (EnemyType) {
 		case 1:
 			
@@ -60,7 +62,9 @@ void Battle::readfile(GUI* pGUI)
 		default:
 			break;
 		}
+		T = &BCastle.retTower(EnemyRegion);
 		Enemy->setarrivaltime(Arrivaltime);
+		Enemy->setOriginalhealth(EnemyHealth);
 		Enemy->SetHealth(EnemyHealth);
 		Enemy->SetID(EnemyID);
 		Enemy->SetPower(EnemyPower);
@@ -117,7 +121,7 @@ void Battle::movetoactive(int simulationtick)
 void Battle::RunSimulation()
 {
 	GUI*  pGUI=new GUI;
-	int towerA, towerB, towerC, towerD;
+	double towerA, towerB, towerC, towerD;
 	int enemyA, enemyB, enemyC, enemyD;
 	int killedA, killedB, killedC, killedD;
 	string info;
@@ -144,7 +148,7 @@ void Battle::RunSimulation()
 		SortNulls(BEnemiesForDraw, EnemyCount);
 		pGUI->DrawBattle(BEnemiesForDraw, EnemyCount);
 		
-		pGUI->PrintMessage("\n"+kinfo);
+		pGUI->PrintMessage(info);
 		pGUI->GetPointClicked(p);
 	}
 
