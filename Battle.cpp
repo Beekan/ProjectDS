@@ -302,19 +302,27 @@ void Battle::SortNulls(Enemy* arr[], int &size)
 	Enemy * temp;
 	int s = size;
 	int c = 0;
+	heap h;
+
+
 	for (int i = 0; i < s; i++)
 	{
-		if (size > 0) {
+		h.Enqueue(arr[i]->GetHealth(), arr[i]);
+		
 			if (arr[i]->GetHealth()==0)
 			{
-				temp = arr[size-1];
-				arr[size-1] = arr[i];
-				arr[i] = temp;
 				c++;
 				
 				//EnemyCount--;
 			}
-		}
+		
 	}
-	size=size-c/2;
+	size = size - c;
+	s = size;
+	for (int i = 0; i < s; i++)
+	{
+		if(h.getNumElements()>0)
+			arr[i] = h.Dequeue()->getData();
+
+	}
 }
