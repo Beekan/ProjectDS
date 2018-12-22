@@ -1,0 +1,9 @@
+KTS  S  FD  LT
+225  4  1  225
+T1_damage  T2_damage  T3_damage  T4_damage  
+2665.015793  3837.976135  1304.720510  1742.758044
+DRAW
+Number of killed Enemies= 1.000000
+Number of active Enemies= 19
+Average FD= 1.000000
+Average KD= 224.000000

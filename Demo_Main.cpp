@@ -4,22 +4,11 @@
 #include<ctime>
 
 
-void SimulateInteractive()
-{
-
-
-
-
-
-}
-
-void SimulateSilent()
-{
-}
 
 int main()
 {
 	srand(time(NULL));
+	
 	Battle* pGameBattle = new Battle;
 	pGameBattle->RunSimulation();
 	

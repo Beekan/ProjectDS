@@ -12,9 +12,11 @@ Battle::Battle()
 	EnemyCount = 0;
 }
 
-void Battle::writefile()
+void Battle::writefile(GUI* pGUI)
 {
-	outFile.open("output.txt");
+	pGUI->PrintMessage("Please, write the output file name");
+	string s = pGUI->GetString();
+	outFile.open(s);
 	int killedenemies = BCastle.getkilledenemies();
 	double avg = BCastle.getkilledenemies();
 	int KTS, S, FD, LT;
@@ -51,7 +53,7 @@ void Battle::writefile()
 	}
 	else {
 		outFile << "DRAW" << endl;
-		outFile << "Total Number of Enemies= " << to_string(BCastle.getkilledenemies()) << endl;
+		outFile << "Number of killed Enemies= " << to_string(avg) << endl;
 		outFile << "Number of active Enemies= " << to_string(totalenemycount - int(avg)) << endl;
 		outFile << "Average FD= " << to_string(avgFD) << endl;
 		outFile << "Average KD= " << to_string(avgKD) << endl;
@@ -92,7 +94,7 @@ void Battle::simulateInteractive(GUI*  pGUI)
 		pGUI->Printinfo(info,einfo,kinfo);
 		pGUI->GetPointClicked(p);
 	}
-	writefile();
+	writefile(pGUI);
 
 
 }
@@ -124,7 +126,7 @@ void Battle::simulateSilent(GUI*  pGUI)
 		movetoactive(timestep);
 		SortNulls(BEnemiesForDraw, EnemyCount);
 	}
-	writefile();
+	writefile(pGUI);
 
 
 }
@@ -190,6 +192,7 @@ void Battle::readfile(GUI* pGUI)
 		Enemy->SetReloadPeriod(Reloadperiod);
 		IEL.enqueue(Enemy);
 	}
+	LoadFile.close();
 	
 }
 
@@ -239,25 +242,37 @@ void Battle::movetoactive(int simulationtick)
 void Battle::RunSimulation()
 {
 	GUI*  pGUI = new GUI;
+	int cont;
+	while (1) {
 	pGUI->PrintMessage("Please, choose the desired mode:1.Interactive Mode 2.Silent Mode");
 	int Mode = stoi(pGUI->GetString());
 	while (Mode != 1 && Mode != 2) {
 		pGUI->PrintMessage("Please, choose a correct desired mode:1.Interactive Mode 2.Silent Mode");
 		Mode = stoi(pGUI->GetString());
 	}
-	if (Mode == 1)
-	{
-		simulateInteractive(pGUI);
+	
+		if (Mode == 1)
+		{
+			simulateInteractive(pGUI);
+
+		}
+
+		else if (Mode == 2)
+
+		{
+			simulateSilent(pGUI);
+			// call silent
+		}
+		pGUI->PrintMessage("want to play again? 1.Yes 2.No");
+		cont = stoi(pGUI->GetString());
+		while (cont > 2 || cont < 1) {
+			pGUI->PrintMessage("please choose a correct number for the choice");
+			cont = stoi(pGUI->GetString());
+		}
+		if (cont == 2)
+			break;
 
 	}
-
-	else if(Mode==2)
-
-	{
-		simulateSilent(pGUI);
-		// call silent
-	}
-
 	
 	
 	

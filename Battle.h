@@ -36,7 +36,7 @@ public:
 	void fight();
 	ifstream LoadFile;
 	ofstream outFile;
-	void writefile();
+	void writefile(GUI* pGUI);
 	void readfile(GUI* pGUI);
 	void AddEnemy(Enemy*& Ptr);
 	Castle * GetCastle();
