@@ -48,6 +48,13 @@ enum MenuItem
 	MENU_ITM_COUNT	//no. of menu icons ==> This should be the last line in this enum
 };
 
+enum mode
+{
+	Interactive = 1,
+    Silent = 0
+
+};
+
 struct Point
 {
 	int x;

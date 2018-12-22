@@ -20,8 +20,13 @@ private:
 											// At every time step, you should update those pointers 
 											// to point to the current active enemies 
 											// then pass the pointers list to the GUI function
+	
+	
+											
+	void simulateInteractive(GUI*  pGUI);
+	void simulateSilent(GUI*  pGUI);
 
-	//
+											//
 	// TODO: Add More Data Members As Needed
 	//
 
@@ -38,7 +43,7 @@ public:
 	void movetoactive(int simulationtick);
 	void RunSimulation();
 	void SortNulls(Enemy* arr[], int &size);
-
+	
 	//void Just_A_Demo();	//just to show a demo and should be removed in phase1 1 & 2
 
 	//

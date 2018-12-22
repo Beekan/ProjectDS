@@ -3,6 +3,20 @@
 #include<cstdlib>
 #include<ctime>
 
+
+void SimulateInteractive()
+{
+
+
+
+
+
+}
+
+void SimulateSilent()
+{
+}
+
 int main()
 {
 	srand(time(NULL));
