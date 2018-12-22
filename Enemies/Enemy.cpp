@@ -84,6 +84,11 @@ double Enemy::GetHealth()
 	return Health;
 }
 
+double Enemy::geth() const
+{
+	return Health;
+}
+
 
 
 color Enemy::GetColor() const

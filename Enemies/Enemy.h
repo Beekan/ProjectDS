@@ -73,6 +73,7 @@ public:
 	int GetOriginalHealth();
 	double Getpriority();
 	double GetHealth();
+	double geth() const;
 
 	color GetColor() const;
 	REGION GetRegion() const;

@@ -39,21 +39,21 @@ void Battle::writefile()
 	if (totalenemycount == avg) {
 		outFile << "WIN" << endl;
 		outFile << "Total Number of Enemies= " << to_string(avg) << endl;
-		outFile << "Average KTS= " << to_string(avgFD) << endl;
+		outFile << "Average FD= " << to_string(avgFD) << endl;
 		outFile << "Average KD= " << to_string(avgKD) << endl;
 	}
 	else if (4 == BCastle.getkilledtowers()) {
 		outFile << "LOSE" << endl;
 		outFile << "Number of killed Enemies= " << to_string(avg) << endl;
 		outFile << "Number of active Enemies= " << to_string(totalenemycount-int(avg)) << endl;
-		outFile << "Average KTS= " << to_string(avgFD) << endl;
+		outFile << "Average FD= " << to_string(avgFD) << endl;
 		outFile << "Average KD= " << to_string(avgKD) << endl;
 	}
 	else {
 		outFile << "DRAW" << endl;
 		outFile << "Total Number of Enemies= " << to_string(BCastle.getkilledenemies()) << endl;
 		outFile << "Number of active Enemies= " << to_string(totalenemycount - int(avg)) << endl;
-		outFile << "Average KTS= " << to_string(avgFD) << endl;
+		outFile << "Average FD= " << to_string(avgFD) << endl;
 		outFile << "Average KD= " << to_string(avgKD) << endl;
 	}
 	outFile.close();

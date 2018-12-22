@@ -165,6 +165,7 @@ void GUI::DrawCastle() const
 //////////////////////////////////////////////////////////////////////////////////////////
 void GUI::DrawEnemy(const Enemy & E, int YPos) const       // It's a private function
 {
+	if (E.geth() > 0) {
 	color clr = E.GetColor();
 	REGION Region = E.GetRegion();
 	int Distance = E.GetDistance();
@@ -203,9 +204,11 @@ void GUI::DrawEnemy(const Enemy & E, int YPos) const       // It's a private fun
 	}
 
 	// Drawing the enemy
-	pWind->SetPen(clr);
-	pWind->SetBrush(clr);
-	pWind->DrawRectangle(x, y, x + EnemyWidth, y + EnemyHeight);
+	
+		pWind->SetPen(clr);
+		pWind->SetBrush(clr);
+		pWind->DrawRectangle(x, y, x + EnemyWidth, y + EnemyHeight);
+	}
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 /* A function to draw a list of enemies and ensure there is no overflow in the drawing*/

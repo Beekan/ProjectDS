@@ -83,14 +83,24 @@ bool Castle::dequeuekilled(Enemy *& E)
 {
 	int min=INT_MAX;
 	int index = 0;
+	int ID;
 	Enemy* q;
 	Enemy* k;
-	if(Towers[0].peekfront(q))
+	if (Towers[0].peekfront(q)) {
 		min = q->getKTS();
-	for (int i = 0; i < 4; i++) {
+		ID = q->GetID();
+	}
+
+	for (int i = 1; i < 4; i++) {
 		if (Towers[i].peekfront(q)) {
 			
 			if (q->getKTS() <= min) {
+				if (q->getKTS() == min) {
+					if (q->GetID() < ID)
+						index = i;
+					continue;
+				}
+
 				index = i;
 			}
 		}
