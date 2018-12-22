@@ -31,7 +31,7 @@ void Healer::Act(Tower* &T)
 		while (Head != NULL) {
 			if (Head->getItem() == this) { Head = Head->getNext(); continue; }
 			distance1 = Head->getItem()->GetDistance();
-			if (abs(distance1 - Distance) <= 2) {
+			if (abs(distance1 - Distance) <= 2 &&Head->getItem()->GetHealth()>0) {
 				health = Head->getItem()->GetHealth();
 				health = health + 0.5*power;
 				Head->getItem()->SetHealth(health);
