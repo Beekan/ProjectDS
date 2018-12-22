@@ -79,20 +79,22 @@ Tower Castle::retTower(REGION R)
 	return Towers[R];
 }
 
-void Castle::dequeuekilled(Enemy *& E)
+bool Castle::dequeuekilled(Enemy *& E)
 {
-	int min = INT_MAX;
+	int min=0;
 	Enemy* q;
 	Enemy* k;
 	for (int i = 0; i < 4; i++) {
-			Towers[i].peekfront(q);
+		if (Towers[i].peekfront(q)) {
+			min = Towers[0].peekfront(q);
 			if (q->getKTS() < min) {
-				min = q->getKTS();
-				E = q;
+				min = i;
 			}
-
-		
+		}
 	}
+	if (Towers[min].dequeueKEL(E))
+		return true;
+	return false;
 }
 
 void Castle::rettowerdamage(double & a, double & b, double & c, double & d)

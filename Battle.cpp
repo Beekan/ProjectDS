@@ -23,12 +23,13 @@ void Battle::writefile()
 	double totaldamage1, totaldamage2, totaldamage3, totaldamage4;
 	BCastle.rettowerdamage(totaldamage1, totaldamage2, totaldamage3, totaldamage4);
 	outFile << "KTS  " << "S  " << "FD  " << "LT" << endl;
-	while (killedenemies-1) {
+	while (killedenemies) {
 		killedenemies--;
-		BCastle.dequeuekilled(E);
-		avgKTS = avgKTS + E->getKTS();
-		avgKD = avgKD + E->getKD();
-		outFile << to_string(E->getKTS()) << "  " << to_string(E->GetID()) << "  " << to_string(E->getFSD()) << "  " << to_string(E->getLT()) << endl;
+		if (BCastle.dequeuekilled(E)) {
+			avgKTS = avgKTS + E->getKTS();
+			avgKD = avgKD + E->getKD();
+			outFile << to_string(E->getKTS()) << "  " << to_string(E->GetID()) << "  " << to_string(E->getFSD()) << "  " << to_string(E->getLT()) << endl;
+		}
 	}
 	avgKTS = avgKTS / BCastle.getkilledenemies();
 	avgKD = avgKD / BCastle.getkilledenemies();
@@ -181,8 +182,8 @@ void Battle::RunSimulation()
 	Point p;
 	pGUI->GetPointClicked(p);
 		for (int timestep = 0; timestep < SimulationTime;timestep++) {
+			if (totalenemycount == BCastle.getkilledenemies() || 4 == BCastle.getkilledtowers()) { break; }
 		    BCastle.ACT(timestep);
-
 			BCastle.gettowerhealth(towerA, towerB, towerC, towerD);
 			BCastle.retCount(enemyA, enemyB, enemyC, enemyD);
 			BCastle.retKilled(killedA, killedB, killedC, killedD);

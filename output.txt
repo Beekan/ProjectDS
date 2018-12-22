@@ -1,1 +1,8 @@
 KTS  S  FD  LT
+T1_damage  T2_damage  T3_damage  T4_damage  
+6.020122  5.369507  4.821420  5.592560
+DRAW
+Total Number of Enemies= 0
+Number of active Enemies= 5
+Average KTS= -nan(ind)
+Average KD= -nan(ind)
