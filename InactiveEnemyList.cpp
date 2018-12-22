@@ -7,6 +7,7 @@ InactiveEnemyList::InactiveEnemyList()
 {
 	backPtr = nullptr;
 	frontPtr = nullptr;
+	count = 0;
 
 }
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -46,7 +47,9 @@ bool InactiveEnemyList::enqueue(Enemy*& newEntry)
 	else
 		backPtr->setNext(newNodePtr); // The InactiveEnemyList was not empty
 	backPtr = newNodePtr; // New node is at back
+	count++;
 	return true;
+
 } // end enqueue
 
 
@@ -76,7 +79,7 @@ bool InactiveEnemyList::dequeue(Enemy*& frntEntry)
 	// Free memory reserved by the deInactiveEnemyListd node
 	delete nodeToDeletePtr;
 
-
+	count--;
 	return true;
 
 }
@@ -101,6 +104,12 @@ bool InactiveEnemyList::peekFront(Enemy*& frntEntry) const
 	frntEntry = frontPtr->getItem();
 	return true;
 
+}
+
+int InactiveEnemyList::retCount()
+{
+
+	return count;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////

@@ -12,6 +12,7 @@ private:
 	Castle BCastle;
 	GUI* pGUI;
 	InactiveEnemyList IEL;
+	int totalenemycount;
 	int EnemyCount;	                         //the actual number of enemies in the game
 	Enemy * BEnemiesForDraw[MaxEnemyCount]; // This Array of Pointers is used for drawing elements in the GUI
 								  			// No matter what list type you are using to hold enemies, 
@@ -29,6 +30,8 @@ public:
 	Battle();
 	void fight();
 	ifstream LoadFile;
+	ofstream outFile;
+	void writefile();
 	void readfile(GUI* pGUI);
 	void AddEnemy(Enemy*& Ptr);
 	Castle * GetCastle();

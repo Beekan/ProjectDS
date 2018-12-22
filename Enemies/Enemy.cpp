@@ -18,12 +18,12 @@ Enemy::~Enemy()
 
 void Enemy::setFSD(int f)
 {
-	firstshotdelay = f;
+	firstshotdelay = f-arrivaltime;
 }
 
 void Enemy::setKD(int k)
 {
-	killdelay = k;
+	killdelay = k-firstshotdelay;
 	lifetime = killdelay + firstshotdelay;
 }
 
@@ -153,6 +153,11 @@ int Enemy::getKD()
 int Enemy::getLT()
 {
 	return lifetime;
+}
+
+int Enemy::getKTS()
+{
+	return KTS;
 }
 
 int Enemy::getsteptimer()

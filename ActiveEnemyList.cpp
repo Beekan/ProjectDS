@@ -109,9 +109,64 @@ bool ActiveEnemyList::isempty()
 	return !Head;
 }
 
+void ActiveEnemyList::setHead(EnemyNode *& E)
+{
+	Head = E;
+}
+
+void ActiveEnemyList::NullHead()
+{
+	Head = NULL;
+	count = 0;
+}
+
 EnemyNode* ActiveEnemyList::retHead()
 {
 	return Head;
+}
+
+void ActiveEnemyList::merge(ActiveEnemyList &L)
+{
+	EnemyNode* p = Head;
+	EnemyNode* q = L.retHead();
+	REGION R;
+	while (q) {
+		R = q->getItem()->GetRegion();
+		q->getItem()->SetRegion(REGION(R + 1));
+		q = q->getNext();
+	}
+	if (p) {
+		while (p->getNext())
+			p = p->getNext();
+		p->setNext(q);
+	}
+	else
+		Head = L.retHead();
+	
+	
+	count =count+L.retCount();
+	L.NullHead();
+	
+	
+}
+
+bool ActiveEnemyList::deletetower(Enemy *& E)
+{
+	EnemyNode* P = Head;
+	REGION R;
+	if (Head) {
+		E = P->getItem();
+		R = E->GetRegion();
+		E->SetRegion(REGION(R + 1));
+		Head = Head->getNext();
+		delete P;
+		count--;
+		return true;
+	}
+		
+		
+	
+	return false;
 }
 
 	

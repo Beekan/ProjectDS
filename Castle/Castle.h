@@ -14,6 +14,7 @@
 class Castle
 {
 	Tower Towers[NoOfRegions];
+	int killed;
 
 	//
 	// TODO: Add More Data Members As Needed
@@ -29,7 +30,11 @@ public:
 	void gettowerhealth(double& A, double& B, double& C, double& D);
 	void retCount(int& a, int& b, int& c, int& d);
 	void retKilled(int& a, int& b, int& c, int& d);
+	int getkilledenemies();
+	int getkilledtowers();
 	Tower retTower(REGION R);
+	void dequeuekilled(Enemy*&E);
+	void rettowerdamage(double&a, double&b, double&c, double&d);
 	void ACT(int);
 
 	//

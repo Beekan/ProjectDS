@@ -18,8 +18,11 @@ public:
 	int retCount();
 	bool DeleteEnemy(Enemy*& E);
 	bool isempty();
+	void setHead(EnemyNode* &E);
+	void NullHead();
 	EnemyNode* retHead();
-	
+	void merge(ActiveEnemyList & L);
+	bool deletetower(Enemy*&E);
 	
 	void InsertEnd(Enemy* E);
     bool Find(int Key);

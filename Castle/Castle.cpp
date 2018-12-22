@@ -4,7 +4,7 @@
 
 Castle::Castle()
 {
-	
+	killed = 0;
 
 }
 
@@ -14,6 +14,7 @@ void Castle::SetTowerHealth(double h)
 		Towers[i].SetHealth(h);
 		Towers[i].SetFreezelimit(h);
 	}
+	
 }
 void Castle::SetMaxEnemy(int Max) {
 	for (int i = 0; i < NoOfRegions; i++) {
@@ -52,11 +53,25 @@ void Castle::retCount(int& a,int& b,int& c,int& d)
 
 void Castle::retKilled(int & a, int & b, int & c, int & d)
 {
-	a = Towers[0].getKilled();
-	b = Towers[1].getKilled();
-	c = Towers[2].getKilled();
-	d = Towers[3].getKilled();
+	a = Towers[0].getKELcount();
+	b = Towers[1].getKELcount();
+	c = Towers[2].getKELcount();
+	d = Towers[3].getKELcount();
 
+}
+
+int Castle::getkilledenemies()
+{
+	int k = 0;
+	for (int i = 0; i < NoOfRegions; i++) {
+		k=k+Towers[i].getKELcount();
+	}
+	return k;
+}
+
+int Castle::getkilledtowers()
+{
+	return killed;
 }
 
 Tower Castle::retTower(REGION R)
@@ -64,10 +79,45 @@ Tower Castle::retTower(REGION R)
 	return Towers[R];
 }
 
+void Castle::dequeuekilled(Enemy *& E)
+{
+	int min = INT_MAX;
+	Enemy* q;
+	Enemy* k;
+	for (int i = 0; i < 4; i++) {
+			Towers[i].peekfront(q);
+			if (q->getKTS() < min) {
+				min = q->getKTS();
+				E = q;
+			}
+
+		
+	}
+}
+
+void Castle::rettowerdamage(double & a, double & b, double & c, double & d)
+{
+	a = Towers[0].gettotaldamage();
+	b = Towers[1].gettotaldamage();
+	c = Towers[2].gettotaldamage();
+	d = Towers[3].gettotaldamage();
+}
+
 void Castle::ACT(int timestep)
 {
+	Enemy* E;
+	int EN;
 	for (int i = 0; i < NoOfRegions; i++) {
 		if (!Towers[i].AELisempty()) {
+			if (Towers[i].getHealth() == 0) {
+				killed++;
+				EN = Towers[i].getAEL().retCount();
+				while (EN) {
+					Towers[i].deletetower(E);
+					Towers[i + 1].insertbeg(E);
+					EN--;
+				}	
+			}
 			Towers[i].AllAct(timestep);
 		}
 	}

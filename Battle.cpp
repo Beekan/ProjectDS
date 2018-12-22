@@ -9,7 +9,53 @@
 
 Battle::Battle()
 {
+	totalenemycount = 0;
 	EnemyCount = 0;
+}
+
+void Battle::writefile()
+{
+	outFile.open("output.txt");
+	int killedenemies = BCastle.getkilledenemies();
+	int KTS, S, FD, LT;
+	double avgKTS=0, avgKD=0;
+	Enemy* E;
+	double totaldamage1, totaldamage2, totaldamage3, totaldamage4;
+	BCastle.rettowerdamage(totaldamage1, totaldamage2, totaldamage3, totaldamage4);
+	outFile << "KTS  " << "S  " << "FD  " << "LT" << endl;
+	while (killedenemies-1) {
+		killedenemies--;
+		BCastle.dequeuekilled(E);
+		avgKTS = avgKTS + E->getKTS();
+		avgKD = avgKD + E->getKD();
+		outFile << to_string(E->getKTS()) << "  " << to_string(E->GetID()) << "  " << to_string(E->getFSD()) << "  " << to_string(E->getLT()) << endl;
+	}
+	avgKTS = avgKTS / BCastle.getkilledenemies();
+	avgKD = avgKD / BCastle.getkilledenemies();
+	outFile << "T1_damage  " << "T2_damage  " << "T3_damage  " << "T4_damage  " << endl;
+	outFile << to_string(totaldamage1) << "  " << to_string(totaldamage2) << "  " << to_string(totaldamage3) << "  " << to_string(totaldamage4) << endl;
+
+	if (totalenemycount == BCastle.getkilledenemies()) {
+		outFile << "WIN" << endl;
+		outFile << "Total Number of Enemies= " << to_string(BCastle.getkilledenemies()) << endl;
+		outFile << "Average KTS= " << to_string(avgKTS) << endl;
+		outFile << "Average KD= " << to_string(avgKD) << endl;
+	}
+	else if (4 == BCastle.getkilledtowers()) {
+		outFile << "LOSE" << endl;
+		outFile << "Number of killed Enemies= " << to_string(BCastle.getkilledenemies()) << endl;
+		outFile << "Number of active Enemies= " << to_string(EnemyCount+IEL.retCount()) << endl;
+		outFile << "Average KTS= " << to_string(avgKTS) << endl;
+		outFile << "Average KD= " << to_string(avgKD) << endl;
+	}
+	else {
+		outFile << "DRAW" << endl;
+		outFile << "Total Number of Enemies= " << to_string(BCastle.getkilledenemies()) << endl;
+		outFile << "Number of active Enemies= " << to_string(EnemyCount + IEL.retCount()) << endl;
+		outFile << "Average KTS= " << to_string(avgKTS) << endl;
+		outFile << "Average KD= " << to_string(avgKD) << endl;
+	}
+	outFile.close();
 }
 
 void Battle::readfile(GUI* pGUI)
@@ -42,6 +88,7 @@ void Battle::readfile(GUI* pGUI)
 		LoadFile >> EnemyPower;
 		LoadFile >> Reloadperiod;
 		LoadFile >> Region;
+		totalenemycount++;
 		EnemyRegion = static_cast<REGION>(Region-65);
 		Fighter* Fight = new Fighter(&BCastle.retTower(EnemyRegion));
 		Healer * Heal = new Healer(&BCastle.retTower(EnemyRegion));
@@ -133,23 +180,23 @@ void Battle::RunSimulation()
 	pGUI->DrawBattle(BEnemiesForDraw, EnemyCount);
 	Point p;
 	pGUI->GetPointClicked(p);
-	for (int timestep = 0; timestep < SimulationTime;timestep++) {
+		for (int timestep = 0; timestep < SimulationTime;timestep++) {
+		    BCastle.ACT(timestep);
 
-		BCastle.ACT(timestep);
+			BCastle.gettowerhealth(towerA, towerB, towerC, towerD);
+			BCastle.retCount(enemyA, enemyB, enemyC, enemyD);
+			BCastle.retKilled(killedA, killedB, killedC, killedD);
+			info = "Tower A health= " + to_string(towerA) + " Tower B health= " + to_string(towerB) + " Tower C health= " + to_string(towerC) + "Tower D health= " + to_string(towerD);
+			einfo = "Tower A enemy= " + to_string(enemyA) + " Tower B enemy= " + to_string(enemyB) + " Tower C enemy= " + to_string(enemyC) + "Tower D enemy= " + to_string(enemyD);
+			kinfo = "Tower A killed= " + to_string(killedA) + " Tower B killed= " + to_string(killedB) + " Tower C killed= " + to_string(killedC) + "Tower D killed= " + to_string(killedD);
+			movetoactive(timestep);
+			SortNulls(BEnemiesForDraw, EnemyCount);
+			pGUI->DrawBattle(BEnemiesForDraw, EnemyCount);
 
-		BCastle.gettowerhealth(towerA, towerB, towerC, towerD);
-		BCastle.retCount(enemyA, enemyB, enemyC, enemyD);
-		BCastle.retKilled(killedA, killedB, killedC, killedD);
-		info = "Tower A health= " + to_string(towerA) + " Tower B health= " + to_string(towerB) + " Tower C health= " + to_string(towerC) + "Tower D health= " + to_string(towerD);
-		einfo= "Tower A enemy= " + to_string(enemyA) + " Tower B enemy= " + to_string(enemyB) + " Tower C enemy= " + to_string(enemyC) + "Tower D enemy= " + to_string(enemyD);
-		kinfo= "Tower A killed= " + to_string(killedA) + " Tower B killed= " + to_string(killedB) + " Tower C killed= " + to_string(killedC) + "Tower D killed= " + to_string(killedD);
-		movetoactive(timestep);
-		SortNulls(BEnemiesForDraw, EnemyCount);
-		pGUI->DrawBattle(BEnemiesForDraw, EnemyCount);
-		
-		pGUI->PrintMessage(info);
-		pGUI->GetPointClicked(p);
-	}
+			pGUI->PrintMessage(einfo);
+			pGUI->GetPointClicked(p);
+		}
+	writefile();
 
 }
 
@@ -242,15 +289,21 @@ void Battle::SortNulls(Enemy* arr[], int &size)
 {
 	Enemy* arr2[MaxEnemyCount];
 	Enemy * temp;
-	for (int i = 0; i < MaxEnemyCount; i++)
+	int s = size;
+	int c = 0;
+	for (int i = 0; i < s; i++)
 	{
-		if (arr[i] == NULL)
-		{
-			temp = arr[size];
-			arr[size] = arr[i];
-			arr[i] = temp;
-			size--;
+		if (size > 0) {
+			if (arr[i]->GetHealth()==0)
+			{
+				temp = arr[size-1];
+				arr[size-1] = arr[i];
+				arr[i] = temp;
+				c++;
+				
+				//EnemyCount--;
+			}
 		}
-			
 	}
+	size=size-c/2;
 }

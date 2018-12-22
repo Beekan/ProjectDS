@@ -35,6 +35,7 @@ protected:
 	int firstshotdelay;
 	int killdelay;
 	int lifetime;
+	int KTS;
 
 
 	//
@@ -63,6 +64,7 @@ public:
 	int getFSD();
 	int getKD();
 	int getLT();
+	int getKTS();
 	int getsteptimer();
 	int  GetDistance() const;
 	int GetArrivalTime();

@@ -1,6 +1,7 @@
 #pragma once
 #include "..\Defs.h"
 #include"../ActiveEnemyList.h"
+#include"..\InactiveEnemyList.h"
 
 
 class Tower
@@ -15,7 +16,7 @@ class Tower
 	double totaldamage;
 	int killed;
 	ActiveEnemyList AEL;
-	ActiveEnemyList KEL;
+	InactiveEnemyList KEL;
 
 
 	//
@@ -36,13 +37,17 @@ public:
 	void SetEnemy(int Max);
 	void SetPower(int Power);
 	void setfreezevalue(double f);
-	int getKilled();
+	void deletetower(Enemy*&E);
+	void insertbeg(Enemy*&E);
 	double gettotaldamage();
 	double getHealth();
 	int getAELcount();
+	int getKELcount();
 	double getfreezelimit();
 	double getfreezevalue();
 	ActiveEnemyList getAEL();
+	bool dequeueKEL(Enemy*&E);
+	bool peekfront(Enemy*&E);
 	bool AELisempty();
 	double GetHealth() const;
 	void AllAct(int);

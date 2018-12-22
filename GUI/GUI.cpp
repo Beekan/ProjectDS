@@ -69,8 +69,8 @@ void GUI::DrawString(const int iX, const int iY, const string Text)
 	pWind->DrawString(iX, iY, Text);
 }
 //////////////////////////////////////////////////////////////////////////////////////////
-/*
-void GUI::DrawMenu() const
+
+/*void GUI::DrawMenu() const
 {
 	//You can draw the menu icons any way you want.
 	//Below is one possible way
@@ -97,8 +97,8 @@ void GUI::DrawMenu() const
 	pWind->SetPen(BROWN, 3);
 	pWind->DrawLine(0, MenuBarHeight, WindWidth, MenuBarHeight);	
 
-}
-*/
+}*/
+
 //////////////////////////////////////////////////////////////////////////////////////////
 void GUI::ClearStatusBar() const
 {

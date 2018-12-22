@@ -31,7 +31,7 @@ void Tower::attack(int timestep)
 	double k=1;
 	int count=AttackNO;
 	if (AttackNO > AEL.retCount()) { count = AEL.retCount(); }
-	int firetype = rand() % 100 + 1;
+	int firetype;
 	EN = AEL.retHead();
 	if (freezevalue < freezelimit) {
 		while (EN) {
@@ -39,6 +39,7 @@ void Tower::attack(int timestep)
 			EN = EN->getNext();
 		}
 		for (int i = 0; i < count; i++) {
+			firetype = rand() % 100 + 1;
 			Heapitem* HI = new Heapitem();
 			HI=h.Dequeue();
 			E = HI->getData();
@@ -61,6 +62,7 @@ void Tower::attack(int timestep)
 			}
 
 		}
+		return;
 	}
 	freezevalue = 0;
 }
@@ -120,10 +122,16 @@ void Tower::setfreezevalue(double f)
 	freezevalue = f;
 }
 
-int Tower::getKilled()
+void Tower::deletetower(Enemy *& E)
 {
-	return KEL.retCount();
+	AEL.deletetower(E);
 }
+
+void Tower::insertbeg(Enemy *& E)
+{
+	AEL.InsertBeg(E);
+}
+
 
 double Tower::gettotaldamage()
 {
@@ -140,6 +148,11 @@ int Tower::getAELcount()
 	return AEL.retCount();
 }
 
+int Tower::getKELcount()
+{
+	return KEL.retCount();
+}
+
 double Tower::getfreezelimit()
 {
 	return freezelimit;
@@ -153,6 +166,20 @@ double Tower::getfreezevalue()
 ActiveEnemyList Tower::getAEL()
 {
 	return AEL;
+}
+
+bool Tower::dequeueKEL(Enemy *& E)
+{
+	if(KEL.dequeue(E))
+		return true;
+	return false;
+}
+
+bool Tower::peekfront(Enemy *& E)
+{
+	if (KEL.peekFront(E))
+		return true;
+	return false;
 }
 
 bool Tower::AELisempty()
@@ -177,7 +204,7 @@ void Tower::AllAct(int timestep)
 		if (AEL.DeleteEnemy(E))
 		{
 			E->setKD(timestep);
-			KEL.InsertBeg(E);
+			KEL.enqueue(E);
 
 		}
 	}
