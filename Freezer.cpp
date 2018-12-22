@@ -41,6 +41,7 @@ Freezer::Freezer(Tower * t) :Enemy(t)
 	firstshotdelay = 0;
 	killdelay = 0;
 	lifetime = 0;
+	KTS = 0;
 }
 
 Freezer::~Freezer()

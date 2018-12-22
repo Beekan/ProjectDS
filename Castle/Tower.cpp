@@ -33,7 +33,7 @@ void Tower::attack(int timestep)
 	if (AttackNO > AEL.retCount()) { count = AEL.retCount(); }
 	int firetype;
 	EN = AEL.retHead();
-	if (freezevalue < freezelimit) {
+	if (freezevalue < freezelimit&& Health>0) {
 		while (EN) {
 			h.Enqueue(EN->getItem()->Getpriority(), EN->getItem());
 			EN = EN->getNext();
@@ -195,17 +195,22 @@ double Tower::GetHealth() const
 void Tower::AllAct(int timestep)
 {
 	Enemy* E;
+	EnemyNode* EN=AEL.retHead();
 	Tower* T = this;
 	AEL.Enemymove();
 	get_attacked();
 	attack(timestep);
+	
 
 	if (!AEL.isempty()) {
-		if (AEL.DeleteEnemy(E))
-		{
-			E->setKD(timestep);
-			KEL.enqueue(E);
+		while (EN ) {
+			if (AEL.DeleteEnemy(E))
+			{
+				E->setKD(timestep);
+				KEL.enqueue(E);
 
+			}
+			EN = EN->getNext();
 		}
 	}
 	

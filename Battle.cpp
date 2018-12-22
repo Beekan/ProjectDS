@@ -16,8 +16,9 @@ void Battle::writefile()
 {
 	outFile.open("output.txt");
 	int killedenemies = BCastle.getkilledenemies();
+	double avg = BCastle.getkilledenemies();
 	int KTS, S, FD, LT;
-	double avgKTS=0, avgKD=0;
+	double avgFD=0, avgKD=0;
 	Enemy* E;
 	double totaldamage1, totaldamage2, totaldamage3, totaldamage4;
 	BCastle.rettowerdamage(totaldamage1, totaldamage2, totaldamage3, totaldamage4);
@@ -25,34 +26,34 @@ void Battle::writefile()
 	while (killedenemies) {
 		killedenemies--;
 		if (BCastle.dequeuekilled(E)) {
-			avgKTS = avgKTS + E->getKTS();
+			avgFD = avgFD + E->getFSD();
 			avgKD = avgKD + E->getKD();
 			outFile << to_string(E->getKTS()) << "  " << to_string(E->GetID()) << "  " << to_string(E->getFSD()) << "  " << to_string(E->getLT()) << endl;
 		}
 	}
-	avgKTS = avgKTS / BCastle.getkilledenemies();
-	avgKD = avgKD / BCastle.getkilledenemies();
+	avgFD = avgFD / avg;
+	avgKD = avgKD / avg;
 	outFile << "T1_damage  " << "T2_damage  " << "T3_damage  " << "T4_damage  " << endl;
 	outFile << to_string(totaldamage1) << "  " << to_string(totaldamage2) << "  " << to_string(totaldamage3) << "  " << to_string(totaldamage4) << endl;
 
-	if (totalenemycount == BCastle.getkilledenemies()) {
+	if (totalenemycount == avg) {
 		outFile << "WIN" << endl;
-		outFile << "Total Number of Enemies= " << to_string(BCastle.getkilledenemies()) << endl;
-		outFile << "Average KTS= " << to_string(avgKTS) << endl;
+		outFile << "Total Number of Enemies= " << to_string(avg) << endl;
+		outFile << "Average KTS= " << to_string(avgFD) << endl;
 		outFile << "Average KD= " << to_string(avgKD) << endl;
 	}
 	else if (4 == BCastle.getkilledtowers()) {
 		outFile << "LOSE" << endl;
-		outFile << "Number of killed Enemies= " << to_string(BCastle.getkilledenemies()) << endl;
-		outFile << "Number of active Enemies= " << to_string(EnemyCount+IEL.retCount()) << endl;
-		outFile << "Average KTS= " << to_string(avgKTS) << endl;
+		outFile << "Number of killed Enemies= " << to_string(avg) << endl;
+		outFile << "Number of active Enemies= " << to_string(totalenemycount-int(avg)) << endl;
+		outFile << "Average KTS= " << to_string(avgFD) << endl;
 		outFile << "Average KD= " << to_string(avgKD) << endl;
 	}
 	else {
 		outFile << "DRAW" << endl;
 		outFile << "Total Number of Enemies= " << to_string(BCastle.getkilledenemies()) << endl;
-		outFile << "Number of active Enemies= " << to_string(EnemyCount + IEL.retCount()) << endl;
-		outFile << "Average KTS= " << to_string(avgKTS) << endl;
+		outFile << "Number of active Enemies= " << to_string(totalenemycount - int(avg)) << endl;
+		outFile << "Average KTS= " << to_string(avgFD) << endl;
 		outFile << "Average KD= " << to_string(avgKD) << endl;
 	}
 	outFile.close();
@@ -111,9 +112,6 @@ void Battle::simulateSilent(GUI*  pGUI)
 
 
 	readfile(pGUI);
-	pGUI->DrawBattle(BEnemiesForDraw, EnemyCount);
-	Point p;
-	pGUI->GetPointClicked(p);
 	for (int timestep = 0; timestep < SimulationTime; timestep++) {
 		if (totalenemycount == BCastle.getkilledenemies() || 4 == BCastle.getkilledtowers()) { break; }
 		BCastle.ACT(timestep);
@@ -125,9 +123,6 @@ void Battle::simulateSilent(GUI*  pGUI)
 		kinfo = "Tower A killed= " + to_string(killedA) + " Tower B killed= " + to_string(killedB) + " Tower C killed= " + to_string(killedC) + "Tower D killed= " + to_string(killedD);
 		movetoactive(timestep);
 		SortNulls(BEnemiesForDraw, EnemyCount);
-//
-		pGUI->PrintMessage(einfo);
-//
 	}
 	writefile();
 
@@ -244,16 +239,19 @@ void Battle::movetoactive(int simulationtick)
 void Battle::RunSimulation()
 {
 	GUI*  pGUI = new GUI;
-
-	string Mode = pGUI->GetString();
-	
-	if (Mode == "1")
+	pGUI->PrintMessage("Please, choose the desired mode:1.Interactive Mode 2.Silent Mode");
+	int Mode = stoi(pGUI->GetString());
+	while (Mode != 1 && Mode != 2) {
+		pGUI->PrintMessage("Please, choose a correct desired mode:1.Interactive Mode 2.Silent Mode");
+		Mode = stoi(pGUI->GetString());
+	}
+	if (Mode == 1)
 	{
 		simulateInteractive(pGUI);
 
 	}
 
-	else 
+	else if(Mode==2)
 
 	{
 		simulateSilent(pGUI);

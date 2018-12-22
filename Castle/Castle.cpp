@@ -81,18 +81,21 @@ Tower Castle::retTower(REGION R)
 
 bool Castle::dequeuekilled(Enemy *& E)
 {
-	int min=0;
+	int min=INT_MAX;
+	int index = 0;
 	Enemy* q;
 	Enemy* k;
+	if(Towers[0].peekfront(q))
+		min = q->getKTS();
 	for (int i = 0; i < 4; i++) {
 		if (Towers[i].peekfront(q)) {
-			min = Towers[0].peekfront(q);
-			if (q->getKTS() < min) {
-				min = i;
+			
+			if (q->getKTS() <= min) {
+				index = i;
 			}
 		}
 	}
-	if (Towers[min].dequeueKEL(E))
+	if (Towers[index].dequeueKEL(E))
 		return true;
 	return false;
 }
@@ -111,7 +114,7 @@ void Castle::ACT(int timestep)
 	int EN;
 	for (int i = 0; i < NoOfRegions; i++) {
 		if (!Towers[i].AELisempty()) {
-			if (Towers[i].getHealth() == 0) {
+			if (Towers[i].getHealth() <= 0) {
 				killed++;
 				EN = Towers[i].getAEL().retCount();
 				while (EN) {

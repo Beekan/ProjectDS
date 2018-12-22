@@ -25,6 +25,7 @@ void Enemy::setKD(int k)
 {
 	killdelay = k-firstshotdelay;
 	lifetime = killdelay + firstshotdelay;
+	KTS = k;
 }
 
 void Enemy::setTowerpointer(Tower * t)
@@ -44,6 +45,8 @@ void Enemy::SetID(int id)
 
 void Enemy::SetHealth(double health)
 {
+	if (health >= originalHealth)
+		health=originalHealth;
 	Health = health;
 }
 

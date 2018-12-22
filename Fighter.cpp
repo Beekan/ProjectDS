@@ -17,6 +17,7 @@ Fighter::Fighter(Tower * t) :Enemy(t)
 	firstshotdelay = 0;
 	killdelay = 0;
 	lifetime = 0;
+	KTS = 0;
 }
 
 void Fighter::Act(Tower* &T)

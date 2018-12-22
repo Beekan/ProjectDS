@@ -48,8 +48,10 @@ void ActiveEnemyList::InsertBeg(Enemy* &E)
 
 void ActiveEnemyList::Enemymove()
 {
-	EnemyNode* p = Head;
+	EnemyNode* p = new EnemyNode;
+	p = Head;
 	int s;
+	if(p != Head)return;
 	while (p != NULL) {
 		if (p->getItem()->Getfreezetimer() == 0) {
 			if (p->getItem()->GetHealth() / p->getItem()->GetOriginalHealth() < 0.5) {
@@ -81,26 +83,15 @@ int ActiveEnemyList::retCount()
 bool ActiveEnemyList::DeleteEnemy(Enemy*& E)
 {
 	EnemyNode* P = Head;
-	while (P != NULL)
-	{
-		if (P->getItem()->GetHealth() == 0) {
+	
+		if (P->getItem()->GetHealth() <= 0) {
 			E = P->getItem();
 			Head = Head->getNext();
-			delete P;
-			count--;
-			return true;
-		}
-		if (P->getNext() == NULL) { break; }
-		if (P->getNext()->getItem()->GetHealth() == 0)
-		{
-			E = P->getNext()->getItem();
-			P->setNext(P->getNext()->getNext());
-			delete P->getNext();
 			count--;
 			return true;
 		}
 		P = P->getNext();
-	}
+	
 	return false;
 }
 
@@ -159,7 +150,6 @@ bool ActiveEnemyList::deletetower(Enemy *& E)
 		R = E->GetRegion();
 		E->SetRegion(REGION(R + 1));
 		Head = Head->getNext();
-		delete P;
 		count--;
 		return true;
 	}

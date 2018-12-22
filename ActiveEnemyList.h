@@ -7,7 +7,7 @@
 class ActiveEnemyList
 {
 private:
-	EnemyNode* Head;
+	EnemyNode * Head;
 	int count;	//Number of Enemys in the list
 public:
 	ActiveEnemyList();
