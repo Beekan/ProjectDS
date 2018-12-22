@@ -58,8 +58,22 @@ void GUI::PrintMessage(string msg) const	//Prints a message on status bar
 	
 	pWind->SetPen(DARKRED);
 	pWind->SetFont(18, BOLD , BY_NAME, "Arial");   
-	pWind->DrawString(10, WindHeight - (int) (StatusBarHeight/1.5), msg); // You may need to change these coordinates later 
+	int length = msg.length();
+	pWind->DrawString(10, WindHeight - (int)(StatusBarHeight / 1.5), msg);
+	// You may need to change these coordinates later 
 	                                                                      // to be able to write multi-line
+}
+void GUI::Printinfo(string msg, string msg1, string msg2)
+{
+	ClearStatusBar();	//First clear the status bar
+
+	pWind->SetPen(DARKRED);
+	pWind->SetFont(18, BOLD, BY_NAME, "Arial");
+	pWind->DrawString(10, WindHeight - (int)(StatusBarHeight / 1.5), msg);
+	pWind->DrawString(10, WindHeight - (int)(StatusBarHeight / 1.5) - 20, msg1);
+	pWind->DrawString(10, WindHeight - (int)(StatusBarHeight / 1.5) - 40, msg2);
+	// You may need to change these coordinates later 
+
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 void GUI::DrawString(const int iX, const int iY, const string Text)
@@ -218,6 +232,7 @@ void GUI::DrawEnemy(const Enemy & E, int YPos) const       // It's a private fun
 //    size : the size of the array (total no. of enemies)
 void GUI::DrawEnemies(Enemy* enemies[], int size) const
 {
+	
 	//draw enemies at each region 
 	for(int region = A_REG; region <= D_REG; region++)
 	{
@@ -228,12 +243,13 @@ void GUI::DrawEnemies(Enemy* enemies[], int size) const
 		{
 			CountEnemies = 0;
 
-			for(int i = 0 ; i < size ; i++)
+			for (int i = 0; i < size; i++)
 			{
-				
-				if(enemies[i]->GetDistance() == distance && enemies[i]->GetRegion() == region)
-				{
-					CountEnemies++;
+				if (enemies[i]->GetHealth() > 0) {
+					if (enemies[i]->GetDistance() == distance && enemies[i]->GetRegion() == region)
+					{
+						CountEnemies++;
+					}
 				}
 			}
 			if(CountEnemies > 15)
@@ -248,13 +264,14 @@ void GUI::DrawEnemies(Enemy* enemies[], int size) const
 			{
 				CountEnemies=0;
 
-				for(int i = 0 ; i < size; i++)
+				for (int i = 0; i < size; i++)
 				{
-					
-					if(enemies[i]->GetDistance() == distance && enemies[i]->GetRegion() == region)
-					{
-						DrawEnemy(*(enemies[i]), CountEnemies + 1);
-						CountEnemies++;
+					if (enemies[i]->GetHealth() > 0) {
+						if (enemies[i]->GetDistance() == distance && enemies[i]->GetRegion() == region)
+						{
+							DrawEnemy(*(enemies[i]), CountEnemies + 1);
+							CountEnemies++;
+						}
 					}
 				}
 			}
