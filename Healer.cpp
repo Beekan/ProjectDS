@@ -27,7 +27,7 @@ void Healer::Act(Tower* &T)
 	int distance1;
 	AEL = T->getAEL();
 	Head = AEL.retHead();
-	if (reloadtimer == 0 && freezetimer == 0) {
+	if (reloadtimer == 0 && freezetimer == 0&& Health>0) {
 		while (Head != NULL) {
 			if (Head->getItem() == this) { Head = Head->getNext(); continue; }
 			distance1 = Head->getItem()->GetDistance();

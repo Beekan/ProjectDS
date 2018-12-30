@@ -51,7 +51,6 @@ void ActiveEnemyList::Enemymove()
 	EnemyNode* p = new EnemyNode;
 	p = Head;
 	int s;
-	if(p != Head)return;
 	while (p != NULL) {
 		if (p->getItem()->Getfreezetimer() == 0) {
 			if (p->getItem()->GetHealth() / p->getItem()->GetOriginalHealth() < 0.5) {
@@ -83,7 +82,7 @@ int ActiveEnemyList::retCount()
 bool ActiveEnemyList::DeleteEnemy(Enemy*& E)
 {
 	EnemyNode* P = Head;
-	
+	for (int i = 0; i < count; i++) {
 		if (P->getItem()->GetHealth() <= 0) {
 			E = P->getItem();
 			Head = Head->getNext();
@@ -91,7 +90,7 @@ bool ActiveEnemyList::DeleteEnemy(Enemy*& E)
 			return true;
 		}
 		P = P->getNext();
-	
+	}
 	return false;
 }
 

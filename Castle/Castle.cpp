@@ -133,8 +133,9 @@ void Castle::ACT(int timestep)
 					EN--;
 				}	
 			}
-			Towers[i].AllAct(timestep);
+			
 		}
+		Towers[i].AllAct(timestep);
 	}
 }
 

@@ -196,25 +196,34 @@ void Tower::AllAct(int timestep)
 {
 	Enemy* E;
 	EnemyNode* EN=AEL.retHead();
-	Tower* T = this;
+	while (EN ) {
+		if (AEL.DeleteEnemy(E))
+		{
+			E->setKD(timestep);
+			KEL.enqueue(E);
+
+		}
+		EN=EN->getNext();
+	}
 	AEL.Enemymove();
 	get_attacked();
 	attack(timestep);
-	
 
-	if (!AEL.isempty()) {
-		while (EN ) {
-			if (AEL.DeleteEnemy(E))
-			{
-				E->setKD(timestep);
-				KEL.enqueue(E);
+}
 
-			}
-			EN = EN->getNext();
+void Tower::deletekilled(int timestep)
+{
+	Enemy* E;
+	int EN = AEL.retCount();
+	while (EN) {
+		if (AEL.DeleteEnemy(E))
+		{
+			E->setKD(timestep);
+			KEL.enqueue(E);
+
 		}
+		EN--;
 	}
-	
-
 }
 
 void Tower::attack(Enemy * ActEnemies)

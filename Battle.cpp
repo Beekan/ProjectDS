@@ -88,7 +88,7 @@ void Battle::simulateInteractive(GUI*  pGUI)
 		einfo = "Tower A enemy= " + to_string(enemyA) + " Tower B enemy= " + to_string(enemyB) + " Tower C enemy= " + to_string(enemyC) + "Tower D enemy= " + to_string(enemyD)+"  ";
 		kinfo = "Tower A killed= " + to_string(killedA) + " Tower B killed= " + to_string(killedB) + " Tower C killed= " + to_string(killedC) + "Tower D killed= " + to_string(killedD);
 		movetoactive(timestep);
-		SortNulls(BEnemiesForDraw, EnemyCount);
+		//SortNulls(BEnemiesForDraw, EnemyCount);
 		pGUI->DrawBattle(BEnemiesForDraw, EnemyCount);
 
 		pGUI->Printinfo(info,einfo,kinfo);
@@ -124,7 +124,7 @@ void Battle::simulateSilent(GUI*  pGUI)
 		einfo = "Tower A enemy= " + to_string(enemyA) + " Tower B enemy= " + to_string(enemyB) + " Tower C enemy= " + to_string(enemyC) + "Tower D enemy= " + to_string(enemyD);
 		kinfo = "Tower A killed= " + to_string(killedA) + " Tower B killed= " + to_string(killedB) + " Tower C killed= " + to_string(killedC) + "Tower D killed= " + to_string(killedD);
 		movetoactive(timestep);
-		SortNulls(BEnemiesForDraw, EnemyCount);
+		//SortNulls(BEnemiesForDraw, EnemyCount);
 	}
 	writefile(pGUI);
 

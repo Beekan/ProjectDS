@@ -51,6 +51,7 @@ public:
 	bool AELisempty();
 	double GetHealth() const;
 	void AllAct(int);
+	void deletekilled(int);
 	void attack(Enemy* ActEnemies); //Added by me
 	//
 	// TODO: Add More Member Functions As Needed
