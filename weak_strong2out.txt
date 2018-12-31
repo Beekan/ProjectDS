@@ -1,8 +1,8 @@
 KTS  S  FD  LT
 T1_damage  T2_damage  T3_damage  T4_damage  
-478.434399  310.929336  543.782154  426.892651
+187.238002  146.746391  177.442509  95.965278
 LOSE
 Number of killed Enemies= 0.000000
-Number of active Enemies= 90
+Number of active Enemies= 40
 Average FD= -nan(ind)
 Average KD= -nan(ind)

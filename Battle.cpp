@@ -246,34 +246,34 @@ void Battle::movetoactive(int simulationtick)
 void Battle::RunSimulation()
 {
 	GUI*  pGUI = new GUI;
-	int cont;
+	string cont;
 	while (1) {
 	pGUI->PrintMessage("Please, choose the desired mode:1.Interactive Mode 2.Silent Mode");
-	int Mode = stoi(pGUI->GetString());
-	while (Mode != 1 && Mode != 2) {
+	string Mode = (pGUI->GetString());
+	while (Mode != "1" && Mode != "2") {
 		pGUI->PrintMessage("Please, choose a correct desired mode:1.Interactive Mode 2.Silent Mode");
 		Mode = stoi(pGUI->GetString());
 	}
 	
-		if (Mode == 1)
+		if (Mode == "1")
 		{
 			simulateInteractive(pGUI);
 
 		}
 
-		else if (Mode == 2)
+		else if (Mode == "2")
 
 		{
 			simulateSilent(pGUI);
 			// call silent
 		}
 		pGUI->PrintMessage("want to play again? 1.Yes 2.No");
-		cont = stoi(pGUI->GetString());
-		while (cont > 2 || cont < 1) {
+		cont = (pGUI->GetString());
+		while (cont != "2" && cont != "1") {
 			pGUI->PrintMessage("please choose a correct number for the choice");
 			cont = stoi(pGUI->GetString());
 		}
-		if (cont == 2)
+		if (cont == "2")
 			break;
 
 	}

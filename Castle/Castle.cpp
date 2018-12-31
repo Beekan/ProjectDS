@@ -99,14 +99,15 @@ bool Castle::dequeuekilled(Enemy *& E)
 					if (q->getFSD() < FD) {
 						index = i;
 						FD = q->getFSD();
-						min = q->getKTS();
-						continue;
+						
+						
 					}
-					
+					continue;
 				}
 
 				index = i;
 				min = q->getKTS();
+				FD = q->getFSD();
 			}
 		}
 	}

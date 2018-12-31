@@ -64,8 +64,10 @@ void Tower::attack(int timestep)
 			delete HI;
 
 		}
+		h->~heap();
 		return;
 	}
+	h->~heap();
 	freezevalue = 0;
 }
 
@@ -208,7 +210,7 @@ void Tower::AllAct(int timestep)
 
 		}
 		delete E;
-		if (AEL.retCount() == 0) { break; }
+		if (AEL.retCount() == 0)break;
 		EN=EN->getNext();
 		
 	}
