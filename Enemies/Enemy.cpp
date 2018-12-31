@@ -134,8 +134,11 @@ void Enemy::SetReloadPeriod(int Reload)
 
 void Enemy::updatepriority()
 {
-	if (freezetimer != 0)
+	if (freezetimer != 0) {
 		Priority = 0;
+		return;
+	}
+
 	Priority = (1 / Distance) + Health + (reloadperiod - reloadtimer);
 }
 
