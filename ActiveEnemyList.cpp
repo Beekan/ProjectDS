@@ -48,8 +48,7 @@ void ActiveEnemyList::InsertBeg(Enemy* &E)
 
 void ActiveEnemyList::Enemymove()
 {
-	EnemyNode* p = new EnemyNode;
-	p = Head;
+	EnemyNode* p = Head;
 	int s;
 	while (p != NULL) {
 		if (p->getItem()->Getfreezetimer() == 0) {
@@ -62,7 +61,6 @@ void ActiveEnemyList::Enemymove()
 		}
 		p = p->getNext();
 	}
-	delete p;
 }
 
 /*void ActiveEnemyList::Enemyattack()
@@ -89,7 +87,7 @@ bool ActiveEnemyList::DeleteEnemy(Enemy*& E)
 		Head = Head->getNext();
 		
 		
-		//delete R; 
+		delete R; 
 		count--;
 		return true;
 	}
@@ -101,7 +99,7 @@ bool ActiveEnemyList::DeleteEnemy(Enemy*& E)
 			EnemyNode * R = P->getNext();
 			P->setNext(P->getNext()->getNext());
 			E = R->getItem();
-			//delete R;
+			delete R;
 			count--;
 			return true;
 		}

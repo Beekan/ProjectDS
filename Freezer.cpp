@@ -20,7 +20,7 @@ void Freezer::Act(Tower* &T)
 		freezevalue = freezevalue + k*power;
 		T->setfreezevalue(freezevalue);
 		reloadtimer = reloadperiod;
-		
+		updatepriority();
 		return;
 	}
 	if (reloadtimer>0)

@@ -204,6 +204,7 @@ void Tower::AllAct(int timestep)
 		{
 			(*E)->setKD(timestep);
 			KEL.enqueue(*E);
+			EN = AEL.retHead();
 
 		}
 		delete E;

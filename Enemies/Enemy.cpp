@@ -46,8 +46,8 @@ void Enemy::SetID(int id)
 
 void Enemy::SetHealth(double health)
 {
-	if (health >= originalHealth)
-		health=originalHealth;
+	if (health >= originalHealth) 
+		health = originalHealth;
 	Health = health;
 }
 

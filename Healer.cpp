@@ -39,6 +39,7 @@ void Healer::Act(Tower* &T)
 			Head = Head->getNext();
 		}
 		reloadtimer = reloadperiod;
+		updatepriority();
 		return;
 	}
 	if (reloadtimer>0)

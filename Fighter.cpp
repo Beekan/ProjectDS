@@ -31,6 +31,7 @@ void Fighter::Act(Tower* &T)
 		health = health - (k / Distance)*power;
 		T->SetHealth(health);
 		reloadtimer = reloadperiod;
+		updatepriority();
 		return;
 	}
 	if(reloadtimer>0)
