@@ -173,7 +173,7 @@ bool ActiveEnemyList::deletetower(Enemy *& E)
 	if (Head) {
 		E = P->getItem();
 		R = E->GetRegion();
-		E->SetRegion(REGION(R + 1));
+		E->SetRegion(REGION((R + 1)%4));
 		
 		P= Head->getNext();
 		delete Head;
