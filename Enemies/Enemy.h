@@ -36,6 +36,7 @@ protected:
 	int killdelay;
 	int lifetime;
 	int KTS;
+	int firstshot;
 
 
 	//

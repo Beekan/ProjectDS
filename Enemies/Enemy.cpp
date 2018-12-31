@@ -19,12 +19,13 @@ Enemy::~Enemy()
 void Enemy::setFSD(int f)
 {
 	firstshotdelay = f-arrivaltime;
+	firstshot = f;
 }
 
 void Enemy::setKD(int k)
 {
-	killdelay = k-firstshotdelay;
-	lifetime = killdelay + firstshotdelay;
+	killdelay = k-firstshot;
+	lifetime = k-arrivaltime;
 	KTS = k;
 }
 

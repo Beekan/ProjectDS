@@ -9,17 +9,18 @@
 void Freezer::Act(Tower* &T)
 {
 	double k = 1;
-	int freezelimit;
-	int freezevalue;
+	double freezelimit;
+	double freezevalue;
 	int p;
 	if (reloadtimer == 0 && freezetimer == 0) {
 		freezelimit = T->getfreezelimit();
 		freezevalue = T->getfreezevalue();
 		if (freezelimit<power)
 			k = 0.5;
-		freezevalue = freezevalue + (k / Distance)*power;
+		freezevalue = freezevalue + k*power;
 		T->setfreezevalue(freezevalue);
 		reloadtimer = reloadperiod;
+		
 		return;
 	}
 	if (reloadtimer>0)

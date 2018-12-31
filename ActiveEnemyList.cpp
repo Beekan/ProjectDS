@@ -62,6 +62,7 @@ void ActiveEnemyList::Enemymove()
 		}
 		p = p->getNext();
 	}
+	delete p;
 }
 
 /*void ActiveEnemyList::Enemyattack()
@@ -81,17 +82,46 @@ int ActiveEnemyList::retCount()
 
 bool ActiveEnemyList::DeleteEnemy(Enemy*& E)
 {
+	if (Head != NULL && Head->getItem()->GetHealth() <= 0)
+	{
+		EnemyNode * R = Head;
+		E = R->getItem();
+		Head = Head->getNext();
+		
+		
+		//delete R; 
+		count--;
+		return true;
+	}
 	EnemyNode* P = Head;
-	for (int i = 0; i < count; i++) {
-		if (P->getItem()->GetHealth() <= 0) {
-			E = P->getItem();
-			Head = Head->getNext();
+	while (P != NULL)
+	{
+		if (P->getNext() != NULL && P->getNext()->getItem()->GetHealth() <= 0)
+		{
+			EnemyNode * R = P->getNext();
+			P->setNext(P->getNext()->getNext());
+			E = R->getItem();
+			//delete R;
 			count--;
 			return true;
 		}
 		P = P->getNext();
 	}
 	return false;
+	/*EnemyNode* P = Head;
+
+	for (int i = 0; i < count; i++) {
+		if (P->getItem()->GetHealth() <= 0) {
+			E = P->getItem();
+			P= Head->getNext();
+			delete Head;
+			Head = P;
+			count--;
+			return true;
+		}
+		P = P->getNext();
+	}
+	return false;*/
 }
 
 bool ActiveEnemyList::isempty()
@@ -148,8 +178,12 @@ bool ActiveEnemyList::deletetower(Enemy *& E)
 		E = P->getItem();
 		R = E->GetRegion();
 		E->SetRegion(REGION(R + 1));
-		Head = Head->getNext();
+		
+		P= Head->getNext();
+		delete Head;
+		Head = P;
 		count--;
+
 		return true;
 	}
 		

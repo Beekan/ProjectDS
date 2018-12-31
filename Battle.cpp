@@ -171,14 +171,18 @@ void Battle::readfile(GUI* pGUI)
 		case 1:
 			
 			Enemy = Fight;
+			delete Heal;
+			delete Freeze;
 			break;
 		case 2:
 			
 			Enemy = Heal;
+			delete Fight, Freeze;
 		    break;
 		case 3:
 			
 			Enemy = Freeze;
+			delete Heal, Fight;
             break;
 		default:
 			break;
@@ -217,7 +221,7 @@ void Battle::movetoactive(int simulationtick)
 	Enemy* Enemy;
 	if (IEL.peekFront(Enemy))
 	{
-        if (Enemy->GetArrivalTime() <= simulationtick)
+        if (Enemy->GetArrivalTime() == simulationtick)
 		{
 			IEL.dequeue(Enemy);
 			Enemy->SetDistance(MaxDistance);

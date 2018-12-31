@@ -22,7 +22,7 @@ void Tower::settotaldamage(double d)
 
 void Tower::attack(int timestep)
 {
-	heap h;
+	heap* h=new heap(AEL.retCount());
 	EnemyNode* EN;
 	Enemy* E;
 	double health;
@@ -35,13 +35,13 @@ void Tower::attack(int timestep)
 	EN = AEL.retHead();
 	if (freezevalue < freezelimit&& Health>0) {
 		while (EN) {
-			h.Enqueue(EN->getItem()->Getpriority(), EN->getItem());
+			h->Enqueue(EN->getItem()->Getpriority(), EN->getItem());
 			EN = EN->getNext();
 		}
 		for (int i = 0; i < count; i++) {
 			firetype = rand() % 100 + 1;
 			Heapitem* HI = new Heapitem();
-			HI=h.Dequeue();
+			HI=h->Dequeue();
 			E = HI->getData();
 			if (firetype <= 20) {
 				if (E->Getfreezetimer() == 0)
@@ -60,6 +60,8 @@ void Tower::attack(int timestep)
 					E->setFSD(timestep);
 				
 			}
+			HI->~Heapitem();
+			delete HI;
 
 		}
 		return;
@@ -194,16 +196,20 @@ double Tower::GetHealth() const
 
 void Tower::AllAct(int timestep)
 {
-	Enemy* E;
+	
 	EnemyNode* EN=AEL.retHead();
 	while (EN ) {
-		if (AEL.DeleteEnemy(E))
+		Enemy** E=new Enemy*;
+		if (AEL.DeleteEnemy(*E))
 		{
-			E->setKD(timestep);
-			KEL.enqueue(E);
+			(*E)->setKD(timestep);
+			KEL.enqueue(*E);
 
 		}
+		delete E;
+		if (AEL.retCount() == 0) { break; }
 		EN=EN->getNext();
+		
 	}
 	AEL.Enemymove();
 	get_attacked();

@@ -12,7 +12,7 @@ void Castle::SetTowerHealth(double h)
 {
 	for(int i = 0; i < NoOfRegions; i++) {
 		Towers[i].SetHealth(h);
-		Towers[i].SetFreezelimit(h);
+		Towers[i].SetFreezelimit(h/20.0);
 	}
 	
 }
@@ -83,12 +83,12 @@ bool Castle::dequeuekilled(Enemy *& E)
 {
 	int min=INT_MAX;
 	int index = 0;
-	int ID;
+	int FD;
 	Enemy* q;
 	Enemy* k;
 	if (Towers[0].peekfront(q)) {
 		min = q->getKTS();
-		ID = q->GetID();
+		FD = q->getFSD();
 	}
 
 	for (int i = 1; i < 4; i++) {
@@ -96,7 +96,7 @@ bool Castle::dequeuekilled(Enemy *& E)
 			
 			if (q->getKTS() <= min) {
 				if (q->getKTS() == min) {
-					if (q->GetID() < ID)
+					if (q->getFSD() < FD)
 						index = i;
 					continue;
 				}
