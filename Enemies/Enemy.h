@@ -2,13 +2,7 @@
 
 #include "..\Defs.h"
 #include "..\CMUgraphicsLib\CMUgraphics.h"
-//#include "..\Castle\Tower.h"
 
-//Enemies colors for next phases
-//You can choose whatever colors you like for your enemies
-
-// Enemy is the base class of each type of enemy
-// Enemy should be an abstract class in next phases
 class Tower;
 class ActiveEnemyList;
 
@@ -38,15 +32,11 @@ protected:
 	int KTS;
 	int firstshot;
 
-
-	//
-	// TODO: Add More Data Members As Needed
-	//
-
 public:
 	Enemy(Tower* t);
 	Enemy(color r_c, REGION r_region, int d = MaxDistance);
 	virtual ~Enemy();
+	//setters
 	void setFSD(int);
 	void setKD(int);
 	void setTowerpointer(Tower* t);
@@ -62,6 +52,7 @@ public:
 	void updatepriority();
 	void setsteptimer(int s);
 	void setfreezetimer(int f);
+	//getters
 	int getFSD();
 	int getKD();
 	int getLT();
@@ -75,21 +66,10 @@ public:
 	double Getpriority();
 	double GetHealth();
 	double geth() const;
-
 	color GetColor() const;
 	REGION GetRegion() const;
-
+	//functions
 	void DecrementDist();
-
-
-	// Virtual Functions: ----------------
-
-	//virtual void Move() = 0;	//All enemies can move
-	virtual void Act(Tower* &T) = 0;	//Acting means fighting or healing
-
-	//
-	// TODO: Add More Member Functions As Needed
-	//
-
+	virtual void Act(Tower* &T) = 0;
 };
 

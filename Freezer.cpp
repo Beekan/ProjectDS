@@ -6,6 +6,22 @@
 
 
 
+Freezer::Freezer(Tower * t) :Enemy(t)
+{
+	T = t;
+	Clr = WHITE;
+	freezetimer = 0;
+	reloadtimer = 0;
+	steptimer = 0;
+	Priority = 2;
+	firstshotdelay = 0;
+	killdelay = 0;
+	lifetime = 0;
+	KTS = 0;
+}
+
+
+
 void Freezer::Act(Tower* &T)
 {
 	double k = 1;
@@ -30,20 +46,6 @@ void Freezer::Act(Tower* &T)
 	updatepriority();
 }
 
-
-Freezer::Freezer(Tower * t) :Enemy(t)
-{
-	T = t;
-	Clr = WHITE;
-	freezetimer = 0;
-	reloadtimer = 0;
-	steptimer = 0;
-	Priority = 2;
-	firstshotdelay = 0;
-	killdelay = 0;
-	lifetime = 0;
-	KTS = 0;
-}
 
 Freezer::~Freezer()
 {

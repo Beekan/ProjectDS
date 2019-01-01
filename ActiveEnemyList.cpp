@@ -63,15 +63,6 @@ void ActiveEnemyList::Enemymove()
 	}
 }
 
-/*void ActiveEnemyList::Enemyattack()
-{
-	EnemyNode* p = Head;
-	while (p) {
-		p->getItem()->Act();
-		p = p->getNext();
-    }
-}*/
-
 int ActiveEnemyList::retCount()
 {
 	return count;
@@ -104,20 +95,6 @@ bool ActiveEnemyList::DeleteEnemy(Enemy*& E)
 		P = P->getNext();
 	}
 	return false;
-	/*EnemyNode* P = Head;
-
-	for (int i = 0; i < count; i++) {
-		if (P->getItem()->GetHealth() <= 0) {
-			E = P->getItem();
-			P= Head->getNext();
-			delete Head;
-			Head = P;
-			count--;
-			return true;
-		}
-		P = P->getNext();
-	}
-	return false;*/
 }
 
 bool ActiveEnemyList::isempty()
@@ -182,9 +159,6 @@ bool ActiveEnemyList::deletetower(Enemy *& E)
 
 		return true;
 	}
-		
-		
-	
 	return false;
 }
 
